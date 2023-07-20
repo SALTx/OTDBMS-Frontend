@@ -1,0 +1,74 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Adjust alignment as needed */
+    min-height: 100vh;
+    margin: 0; /* Reset default margin */
+  }
+
+  h2 {
+    text-align: center;
+    font-size: 30px;
+    margin-top: 20px; /* Add margin to create a gap */
+  }
+  
+  form {
+    text-align: center;
+    margin-top: 20px; /* Add margin to create a gap */
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 20px;
+  }
+  
+  input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    font-size: 16px;
+  }
+  
+  button[type="submit"] {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+  }
+  
+  .error {
+    display: none;
+    color: red;
+    margin-top: 10px;
+    font-size: 16px;
+  }
+  
+  .error.visible {
+    display: block;
+  }
+  
+  form {
+    text-align: center;
+  }
+  
+  label {
+    display: inline-block;
+    width: 120px; /* Adjust the width as needed */
+    text-align: right;
+    margin-right: 10px; /* Add some spacing between label and input */
+  }
+  
+  input[type="text"],
+  input[type="password"] {
+    width: 200px; /* Adjust the width as needed */
+    padding: 8px;
+    margin-bottom: 15px;
+    font-size: 16px;
+  }
+  
