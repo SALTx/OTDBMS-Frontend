@@ -1,0 +1,43 @@
+add favicon to the website
+
+
+add more relevant information to the kpi views
+
+check every page for
+    - imports
+    - titles
+    - meta tags
+    
+
+
+
+//! rewrite the controls for individual fields using the database methods such as getEnumValues and getDistinctCourseCodes
+
+async function getDistinctCourseCodes() {
+  const rows = await executeQuery(
+    `SELECT DISTINCT \`Course Code\` FROM students;`
+  );
+  return rows.map((row) => row.Field);
+}
+
+
+[
+  "EGDF09",
+  "EGDF11",
+  "EGDF12",
+  "EGDF13",
+  "EGDF17",
+  "EGDF19",
+  "EGDF20",
+  "EGDF21",
+  "EGDF22",
+  "EGDF94",
+  "EGDFPA",
+]
+
+user restrictions
+admins can
+  - view tables
+  - import/export
+  - modify users
+  

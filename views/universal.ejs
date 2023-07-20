@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/universal.css" />
+    <title><%- page %></title>
+    <!-- define data in the client-side scope -->
+    <script>
+      const data = <%- JSON.stringify(data) %>;
+    </script>
+  </head>
+  <body>
+    <%- include('partials/nav') %>
+    <h2><%- page %></h2>
+    <div class="table-container">
+      <table id="data-table">
+        <thead>
+          <tr>
+            <% Object.keys(data[0]).forEach((key) => { %>
+            <th><%= key %></th>
+            <% }); %>
+          </tr>
+        </thead>
+        <tbody>
+          <% data.forEach((row) => { %>
+          <tr>
+            <% Object.values(row).forEach((value) => { %>
+            <td><%= value %></td>
+            <% }); %>
+          </tr>
+          <% }); %>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="checkbox-container">
+      <% Object.keys(data[0]).forEach((key, index) => { %>
+      <label>
+        <input
+          type="checkbox"
+          class="column-checkbox"
+          data-index="<%= index %>"
+          checked
+        />
+        <%= key %>
+      </label>
+      <% }); %>
+    </div>
+
+    <div id="sort-search">
+      <div class="sort">
+        <label for="sort-select">Sort by:</label>
+        <select id="sort-select">
+          <option value="" selected disabled>-- Select Column --</option>
+          <% Object.keys(data[0]).forEach((key) => { %>
+          <option value="<%= key %>"><%= key %></option>
+          <% }); %>
+        </select>
+      </div>
+      <div class="search">
+        <label for="search-input">Search:</label>
+        <input type="text" id="search-input" />
+        <button id="search-button">Go</button>
+      </div>
+      <!-- see if the partial partials/controls/{{table}}.ejs exists, if it does, include it here -->
+      <% if (partialExists) { %> <%- include(`partials/controls/${table}`); %>
+      <% } %>
+    </div>
+
+    <% if (session.user && session.user.accountType == "Admin" || true) { %>
+    <div id="import-export">
+      <div class="button-group">
+        <h3>Import</h3>
+        <button class="import-button" data-type="XML">XML</button>
+        <button class="import-button" data-type="XLS">XLS</button>
+        <button class="import-button" data-type="JSON">JSON</button>
+        <button class="import-button" data-type="CSV">CSV</button>
+      </div>
+
+      <div class="button-group">
+        <h3>Export</h3>
+        <button class="export-button" data-type="XML">XML</button>
+        <button class="export-button" data-type="XLS">XLS</button>
+        <button class="export-button" data-type="JSON">JSON</button>
+        <button class="export-button" data-type="CSV">CSV</button>
+      </div>
+    </div>
+    <% } %> <%- include('partials/footer') %>
+    <script src="/js/jquery-3.7.0.min.js"></script>
+    <script src="/js/universal.js" type="module"></script>
+  </body>
+</html>

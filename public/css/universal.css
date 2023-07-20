@@ -1,0 +1,27 @@
+tr,
+td,
+th,
+table {
+  border: 1px solid black;
+  border-collapse: collapse;
+  padding: 5px;
+}
+
+.table-container {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+thead {
+  position: sticky;
+  top: 0;
+  background-color: #f2f2f2;
+}
+th {
+  padding: 10px;
+  font-weight: bold;
+}
+td {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}

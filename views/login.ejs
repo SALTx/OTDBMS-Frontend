@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <style>
+      .error {
+        display: none;
+        color: red;
+      }
+      .error.visible {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- check if session.user is set, if so then redirect to "/" otherwise, stay on the page -->
+    <% if (session.user) { %>
+    <script>
+      window.location.href = "/";
+    </script>
+    <% } %> <%- include('partials/nav') %>
+    <h2>Login</h2>
+    <form action="/login" method="POST">
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" required /><br />
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required /><br />
+      <button type="submit">Login</button>
+    </form>
+    <div class="error <%= error ? 'visible' : '' %>"><%= error %></div>
+    <%- include('partials/footer') %>
+  </body>
+</html>
