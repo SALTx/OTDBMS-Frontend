@@ -41,3 +41,22 @@ admins can
   - import/export
   - modify users
   
+
+
+
+<<Presentation notes>>
+  Project objectives
+    make a gui application that allows for codeless sql database manipulation
+  features
+    - User friendly gui
+    - Live data visualisation
+    - Tracking based on user defined KPIs
+    - import/export data from XML, XLS, JSON, CSV
+    - codeless database manipulation
+    - Data visualisation with graphs and charts
+
+  problems faced
+    - Figuring out how to extract data from XLSX files and convert it to JSON
+    - Figuring out how to use the chart.js library
+    - converting loose files into JSON and then into sql queries to be executed
+    - 

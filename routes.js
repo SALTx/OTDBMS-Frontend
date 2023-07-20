@@ -97,4 +97,27 @@ router.get("/database/views/kpi/:num", async (req, res) => {
   res.send(kpi);
 });
 
+// uploading file
+router.post("/upload", (req, res) => {
+  if (!req.files || Object.keys(req.files).length === 0) {
+    res.send("No files were uploaded.");
+    return;
+  } else {
+    // rename the file to user's name and timestamp
+    const file = req.files.file;
+    const filetype = file.mimetype.split("/")[1];
+    const filename = `${req.body.name}_${Date.now()}.${filetype}`;
+
+    file.mv(`public/uploads/${filename}`, (err) => {
+      if (err) {
+        res.send("Error uploading file");
+      } else {
+        res.send("File uploaded");
+      }
+    });
+
+    // once its uploaded, add it to the database
+  }
+});
+
 export default router;

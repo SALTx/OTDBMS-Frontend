@@ -72,10 +72,18 @@
     <div id="import-export">
       <div class="button-group">
         <h3>Import</h3>
-        <button class="import-button" data-type="XML">XML</button>
-        <button class="import-button" data-type="XLS">XLS</button>
-        <button class="import-button" data-type="JSON">JSON</button>
-        <button class="import-button" data-type="CSV">CSV</button>
+        <form action="/upload">
+          <!-- table name and logged in user name -->
+          <input type="text" value="<%= table %>" name="table" hidden />
+          <input
+            type="text"
+            value="<%= session.user.username %>"
+            name="name"
+            hidden
+          />
+          <input type="file" id="file-input" name="file-input" />
+          <button id="import-button">Import</button>
+        </form>
       </div>
 
       <div class="button-group">
