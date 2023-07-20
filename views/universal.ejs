@@ -3,7 +3,6 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/css/nav.css" />
     <link rel="stylesheet" href="/css/universal.css" />
     <title><%- page %></title>
     <!-- define data in the client-side scope -->
@@ -52,7 +51,12 @@
       <span class="checkbox-title">Options:</span>
       <% Object.keys(data[0]).forEach((key, index) => { %>
       <label>
-        <input type="checkbox" class="column-checkbox" data-index="<%= index %>" checked />
+        <input
+          type="checkbox"
+          class="column-checkbox"
+          data-index="<%= index %>"
+          checked
+        />
         <%= key %>
       </label>
       <% }); %>
@@ -74,8 +78,7 @@
         <button id="search-button">Go</button>
       </div>
       <!-- see if the partial partials/controls/{{table}}.ejs exists, if it does, include it here -->
-      <% if (partialExists) { %>
-      <%- include(`partials/controls/${table}`); %>
+      <% if (partialExists) { %> <%- include(`partials/controls/${table}`); %>
       <% } %>
     </div>
 
@@ -86,12 +89,7 @@
         <form action="/upload">
           <!-- table name and logged in user name -->
           <input type="text" value="<%= table %>" name="table" hidden />
-          <input
-            type="text"
-            value="<%= session.user.username %>"
-            name="name"
-            hidden
-          />
+          <input type="text" name="name" hidden />
           <input type="file" id="file-input" name="file-input" />
           <button id="import-button">Import</button>
         </form>
@@ -105,9 +103,7 @@
         <button class="export-button" data-type="CSV">CSV</button>
       </div>
     </div>
-    <% } %>
-
-    <%- include('partials/footer') %>
+    <% } %> <%- include('partials/footer') %>
     <script src="/js/jquery-3.7.0.min.js"></script>
     <script src="/js/universal.js" type="module"></script>
   </body>
