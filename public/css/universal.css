@@ -1,27 +1,109 @@
-tr,
-td,
-th,
+/* Reset styles for tables */
 table {
-  border: 1px solid black;
   border-collapse: collapse;
-  padding: 5px;
+  width: calc(100% + 50px);
+  max-width: 850px;
+  margin: 0 auto;
 }
 
-.table-container {
-  max-height: 400px;
-  overflow-y: auto;
+/* Table cells */
+th,
+td {
+  border: 2px solid black; /* Increase border thickness */
+  padding: 10px;
+  text-align: left;
 }
 
+/* Table header */
 thead {
   position: sticky;
   top: 0;
   background-color: #f2f2f2;
-}
-th {
-  padding: 10px;
   font-weight: bold;
 }
-td {
+
+/* Container for the table with scrollbar */
+.table-container {
+  max-height: 450px;
+  overflow-y: auto;
+  margin: 20px auto; /* Increase the margin value to add space */
+  text-align: center;
+}
+
+/* Center the sort and search section */
+#sort-search {
+  text-align: center;
+  margin-bottom: 40px; /* Increase the margin value to add space */
+}
+
+/* Center the "Students" heading */
+h2 {
+  text-align: center;
+}
+
+/* Checkbox container */
+.checkbox-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
   padding: 10px;
-  border-bottom: 1px solid #ccc;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.checkbox-container label {
+  margin: 5px; /* Adjust the margin as desired */
+  display: flex;
+  align-items: center;
+}
+
+.checkbox-title {
+  margin-right: 10px;
+}
+
+/* Import and export section */
+#import-export {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.export-button {
+  margin-top: 10px;
+}
+
+/* Sort by */
+#sort-select,
+#sort-select option {
+  font-size: 24px; /* Increase the font size for Sort by */
+}
+
+/* Search */
+#search-input,
+#search-button {
+  font-size: 24px; /* Increase the font size for Search */
+}
+
+/* Footer */
+#footer {
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 600px) {
+  /* Adjust styles for smaller screens if needed */
+}
+
+/* Additional styles for the tables */
+.tables-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.table-container {
+  flex-basis: calc(50% - 10px);
+  margin-bottom: 20px;
 }

@@ -1,0 +1,112 @@
+/* Reset default margins and paddings */
+body,
+h1,
+h2,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+/* Center the content horizontally */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #f5f5f5;
+}
+
+/* Set a maximum width for the content */
+.container {
+  max-width: 1200px;
+  padding: 20px;
+  width: 100%; /* This allows container to be responsive */
+  box-sizing: border-box; /* To include padding and border in width */
+}
+
+/* Style the header */
+h1 {
+  font-size: 2.5em; /* Using em makes font size responsive */
+  margin-bottom: 20px;
+}
+
+/* Style the KPI overview section */
+#KPI-overview {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-top: 40px;
+  flex-wrap: wrap; /* Allow the KPI boxes to wrap on smaller screens */
+}
+
+/* Style each KPI box */
+#KPI-overview > div {
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 60%; /* Set the width to 60% of the container */
+  margin-bottom: 20px; /* Add margin at the bottom of each KPI box */
+  margin-left: auto; /* Center align each KPI box horizontally */
+  margin-right: auto;
+  box-sizing: border-box; /* Include padding and border within the width */
+}
+
+#KPI-overview h2 {
+  font-size: 2em; /* Using em makes font size responsive */
+  margin-bottom: 10px;
+}
+
+#KPI-overview p {
+  font-size: 1em; /* Using em makes font size responsive */
+  color: #666;
+  margin-bottom: 20px;
+}
+
+/* Style the footer */
+footer {
+  margin-top: 40px;
+  text-align: center;
+  color: #666;
+}
+
+/* Media queries for responsive design */
+@media (max-width: 1200px) {
+  .container {
+    padding: 10px; /* Adjust the padding for smaller screens */
+  }
+
+  #KPI-overview > div {
+    width: 80%; /* Set the width to 80% of the container on smaller screens */
+  }
+
+  h1 {
+    font-size: 2em; /* Adjust font sizes for smaller screens */
+  }
+
+  #KPI-overview h2 {
+    font-size: 1.5em;
+  }
+
+  #KPI-overview p {
+    font-size: 0.9em;
+  }
+}
+
+@media (max-width: 768px) {
+  #KPI-overview > div {
+    width: 100%; /* Set the width to 100% of the container on even smaller screens */
+  }
+
+  h1 {
+    font-size: 1.5em; /* Adjust font sizes for even smaller screens */
+  }
+
+  #KPI-overview h2 {
+    font-size: 1.2em;
+  }
+
+  #KPI-overview p {
+    font-size: 0.8em;
+  }
+}
