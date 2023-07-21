@@ -3,6 +3,7 @@ import express from "express";
 import router from "./routes.js";
 import chalk from "chalk";
 import session from "express-session";
+import fileUpload from "express-fileupload";
 
 // workaround for __dirname
 import path from "path";
@@ -19,6 +20,9 @@ app.use(express.static("public"));
 app.use(express.static(__dirname));
 app.use("/icons", express.static("public/icons"));
 app.use(express.urlencoded({ extended: true }));
+
+// uploading files
+app.use(fileUpload());
 
 // session
 app.use(

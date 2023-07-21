@@ -82,15 +82,20 @@
       <% } %>
     </div>
 
-    <% if (session.user && session.user.accountType == "Admin" || true) { %>
+    <% if (session.user && (session.user.accountType == "Admin" ||
+    session.user.accountType == "Teacher")) { %>
     <div id="import-export">
       <div class="button-group">
         <h3>Import</h3>
-        <form action="/upload">
-          <!-- table name and logged in user name -->
+        <form action="/upload" method="POST" enctype="multipart/form-data">
           <input type="text" value="<%= table %>" name="table" hidden />
-          <input type="text" name="name" hidden />
-          <input type="file" id="file-input" name="file-input" />
+          <input
+            type="text"
+            name="name"
+            value="<%= session.user.name %>"
+            hidden
+          />
+          <input type="file" id="file-input" name="file" />
           <button id="import-button">Import</button>
         </form>
       </div>
@@ -108,3 +113,8 @@
     <script src="/js/universal.js" type="module"></script>
   </body>
 </html>
+
+<script>
+  // count the number of rows displayed in the table
+  const rowCount = document.querySelectorAll("#data-table tbody tr").length;
+</script>

@@ -21,7 +21,7 @@ function renderKpiGraph(kpiNumber) {
         .getElementById(`kpi${kpiNumber}Chart`)
         .getContext("2d");
       const kpiChart = new Chart(ctx, {
-        type: "line",
+        type: "bar",
         data: {
           labels: courseNames,
           datasets: [

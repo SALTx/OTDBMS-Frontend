@@ -2,6 +2,7 @@ import express from "express";
 import database from "./database.js";
 import fs from "fs";
 import chalk from "chalk";
+import moment from "moment";
 
 const router = express.Router();
 
@@ -97,16 +98,19 @@ router.get("/database/views/kpi/:num", async (req, res) => {
   res.send(kpi);
 });
 
+// TODO: remove space from user's name or just use username
 // uploading file
 router.post("/upload", (req, res) => {
+  console.log(req.files);
   if (!req.files || Object.keys(req.files).length === 0) {
     res.send("No files were uploaded.");
     return;
   } else {
     // rename the file to user's name and timestamp
     const file = req.files.file;
-    const filetype = file.mimetype.split("/")[1];
-    const filename = `${req.body.name}_${Date.now()}.${filetype}`;
+    const filetype = file.name.split(".")[1];
+    const timestamp = moment().format("YYYYMMDD_HHmm");
+    const filename = `${req.body.name}_${timestamp}.${filetype}`;
 
     file.mv(`public/uploads/${filename}`, (err) => {
       if (err) {
