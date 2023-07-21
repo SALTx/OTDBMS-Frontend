@@ -49,6 +49,34 @@ router.get("/overseasprograms", async (req, res) => {
   });
 });
 
+router.get("/trips", async (req, res) => {
+  const trips = await database.executeQuery("SELECT * FROM trips");
+  const partialExists = fs.existsSync(`views/partials/controls/trips.ejs`);
+
+  res.render("universal", {
+    page: "Trips",
+    table: "trips",
+    title: "Trips",
+    data: trips,
+    partialExists,
+  });
+});
+
+router.get("/tripdetails", async (req, res) => {
+  const tripdetails = await database.executeQuery("SELECT * FROM tripdetails");
+  const partialExists = fs.existsSync(
+    `views/partials/controls/tripdetails.ejs`
+  );
+
+  res.render("universal", {
+    page: "Trip Details",
+    table: "tripdetails",
+    title: "Trip Details",
+    data: tripdetails,
+    partialExists,
+  });
+});
+
 router.get("/resources", async (req, res) => {
   res.render("resources", {
     page: "Resources",
