@@ -6,8 +6,12 @@
     <title>User management</title>
   </head>
   <body>
-    <% if (session.user.accountType !== 'Admin') { location.href = '/'; } %> <%-
-    include('partials/nav') %>
+    <% if (session.user && session.user.accountType !== 'Admin') { %>
+    <script>
+      alert("poppy");
+      window.location.href = "/";
+    </script>
+    <% } %> <%- include('partials/nav') %>
     <h1>User Management</h1>
 
     <table>
@@ -15,16 +19,14 @@
         <tr>
           <th>ID</th>
           <th>Name</th>
-          <th>Email</th>
           <th>Actions</th>
         </tr>
       </thead>
       <tbody>
         <% users.forEach(function(user) { %>
         <tr>
-          <td><%= user.id %></td>
+          <td><%= user.username %></td>
           <td><%= user.name %></td>
-          <td><%= user.email %></td>
           <td>
             <button onclick="retrieveUser(<%= user.id %>)">Retrieve</button>
             <button onclick="updateUser(<%= user.id %>)">Update</button>
