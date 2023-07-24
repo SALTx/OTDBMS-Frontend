@@ -60,3 +60,35 @@ admins can
     - Figuring out how to use the chart.js library
     - converting loose files into JSON and then into sql queries to be executed
     - 
+
+
+    - add user controls for admin
+- add user name after login
+- when changing search by the columns re-appear
+- implement search for countries in the select menu
+- add number of rows that are being displayed in the table
+- improve the search for students page (stage isnt searching properly)
+- add dropdown menu for some search options
+- add aggregated values in front of the kpi label in index
+- add values for the individual bars, over the bar > in a table > besides the course name
+- add sorting functionality (alphabetical, value)
+- add yearly report functionality and figure out how itll be formatted
+- finish up the trips page and make it possible for staff accounts to view their own diplomas
+- hide sensitive information from guests (student admin numbers, names, etc) (maybe censor off the last few letters)
+- imform users that they can hover over the bars to view more information in the graph
+- make tests for the api
+- add password security
+- copy edit page from the old project
+
+Middle notes
+
+- Add blue values to KPI graphs
+
+SQL notes
+
+- Change approval status
+- improve the readability of the overseas programs
+- remove time from the overseas programs
+- add oci countries to the kpi 1
+- count by program type
+- add code to search overseas programs by quarter
