@@ -19,22 +19,22 @@ router.get("/", (req, res) => {
   });
 });
 
-router.get("/students", async (req, res) => {
-  const students = await database.executeQuery("SELECT * FROM students");
+router.get("/studentsview", async (req, res) => {
+  const studentsview = await database.executeQuery("SELECT * FROM studentsview");
   const partialExists = fs.existsSync(`views/partials/controls/students.ejs`);
 
   res.render("universal", {
     page: "Students",
-    table: "students",
+    table: "studentsview",
     title: "Students",
-    data: students,
+    data: studentsview,
     partialExists: partialExists,
   });
 });
 
-router.get("/overseasprograms", async (req, res) => {
-  const overseasprograms = await database.executeQuery(
-    "SELECT * FROM overseasprograms"
+router.get("/overseasprogramsview", async (req, res) => {
+  const overseasprogramsview = await database.executeQuery(
+    "SELECT * FROM overseasprogramsview"
   );
   const partialExists = fs.existsSync(
     `views/partials/controls/overseasprograms.ejs`
@@ -42,9 +42,9 @@ router.get("/overseasprograms", async (req, res) => {
 
   res.render("universal", {
     page: "Overseas Programs",
-    table: "overseasprograms",
+    table: "overseasprogramsview",
     title: "Overseas Programs",
-    data: overseasprograms,
+    data: overseasprogramsview,
     partialExists,
   });
 });
@@ -76,6 +76,37 @@ router.get("/tripdetails", async (req, res) => {
     partialExists,
   });
 });
+
+router.get("/oimpdetails", async (req, res) => {
+  const oimpdetails = await database.executeQuery("SELECT * FROM oimpdetails");
+  const partialExists = fs.existsSync(
+    `views/partials/controls/oimpdetails.ejs`
+  );
+
+  res.render("universal", {
+    page: "Oimp Details",
+    table: "oimpdetails",
+    title: "Oimp Details",
+    data: oimpdetails,
+    partialExists,
+  });
+});
+
+router.get("/audittable", async (req, res) => {
+  const audittable = await database.executeQuery("SELECT * FROM audittable");
+  const partialExists = fs.existsSync(
+    `views/partials/controls/audittable.ejs`
+  );
+
+  res.render("universal", {
+    page: "Audit Table",
+    table: "audittable",
+    title: "Audit Table",
+    data: audittable,
+    partialExists,
+  });
+});
+
 
 router.get("/resources", async (req, res) => {
   res.render("resources", {
