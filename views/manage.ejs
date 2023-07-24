@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User management</title>
+  </head>
+  <body>
+    <% if (session.user.accountType !== 'Admin') { location.href = '/'; } %> <%-
+    include('partials/nav') %>
+    <h1>User Management</h1>
+
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% users.forEach(function(user) { %>
+        <tr>
+          <td><%= user.id %></td>
+          <td><%= user.name %></td>
+          <td><%= user.email %></td>
+          <td>
+            <button onclick="retrieveUser(<%= user.id %>)">Retrieve</button>
+            <button onclick="updateUser(<%= user.id %>)">Update</button>
+            <button onclick="deleteUser(<%= user.id %>)">Delete</button>
+          </td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+
+    <button onclick="createUser()">Create User</button>
+    <%- include('partials/footer') %>
+    <script>
+      function retrieveUser(id) {
+        // TODO: implement retrieve user functionality
+      }
+
+      function updateUser(id) {
+        // TODO: implement update user functionality
+      }
+
+      function deleteUser(id) {
+        // TODO: implement delete user functionality
+      }
+
+      function createUser() {
+        // TODO: implement create user functionality
+      }
+    </script>
+  </body>
+</html>

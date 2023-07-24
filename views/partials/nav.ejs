@@ -8,7 +8,9 @@
     <li><a href="/overseasprograms">Overseas Programs</a></li>
     <li><a href="/tripdetails">Trip details</a></li>
     <li><a href="/resources">Resources</a></li>
-    <% if (session.user) { %>
+    <% if(session.user && session.user.accountType === 'Admin') { %>
+    <li><a href="/manage">Manage</a></li>
+    <% } %> <% if (session.user) { %>
     <li><a href="/logout">Log out</a></li>
     <% } else { %>
     <li><a href="/login">Log in</a></li>

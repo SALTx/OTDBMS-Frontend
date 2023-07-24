@@ -83,6 +83,17 @@ router.get("/resources", async (req, res) => {
     title: "Resources",
   });
 });
+
+router.get("/manage", async (req, res) => {
+  const users = await database.executeQuery("SELECT * FROM users");
+
+  res.render("manage", {
+    page: "Manage",
+    title: "Manage",
+    users,
+  });
+});
+
 // Auth routes
 router.get("/login", (req, res) => {
   const { error } = req.query;
