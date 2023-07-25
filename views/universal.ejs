@@ -46,17 +46,17 @@
         </tbody>
       </table>
     </div>
-    <h2>
+    <h3>
       Count:
       <span id="row-count">
         <script>
-          const rowCount = document.querySelectorAll(
-            "#data-table tbody tr"
-          ).length;
-          document.write(rowCount);
+          const rowCount = document.querySelectorAll("#data-table tbody tr").length;
+          const columnName = document.querySelector("#data-table th").innerText;
+          document.write(rowCount + " " + columnName);
         </script>
       </span>
-    </h2>
+    </h3>
+    
 
     <div class="checkbox-container">
       <span class="checkbox-title">Options:</span>
