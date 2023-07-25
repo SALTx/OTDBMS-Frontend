@@ -39,6 +39,10 @@ $(document).ready(() => {
       }
     });
     renderTable(sortedData);
+
+    // change the value of span with id "row-count" to number of visible rows in the table
+    const rowCount = $("#data-table tbody tr:visible").length;
+    $("#row-count").text(rowCount);
   });
 
   $("#search-button").on("click", () => {
@@ -67,16 +71,21 @@ $(document).ready(() => {
       return;
     }
 
-    renderTable(filteredData); // Call renderTable function after filtering the data
+    renderTable(filteredData);
 
     // change the value of span with id "row-count" to number of visible rows in the table
     const rowCount = $("#data-table tbody tr:visible").length;
     $("#row-count").text(rowCount);
   });
-  // Clear the search input when the sort column is changed
-  $("#sort-select").on("change", () => {
-    $("#search-input").val("");
-  });
+
+  // Update the row count when the sort order checkbox is changed
+  $("#sort-order").on("change", () => {
+    const rowCount = $("#data-table tbody tr:visible").length;
+    $("#row-count").text(rowCount);
+  }); // // Clear the search input when the sort column is changed
+  // $("#sort-select").on("change", () => {
+  //   $("#search-input").val("");
+  // });
 });
 
 function renderTable(data) {
