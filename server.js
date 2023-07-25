@@ -1,6 +1,7 @@
 import dotenv from "dotenv";
 import express from "express";
 import router from "./routes.js";
+import userRouter from "./routes/users.js";
 import chalk from "chalk";
 import session from "express-session";
 import fileUpload from "express-fileupload";
@@ -35,6 +36,7 @@ app.use(
 
 // routes
 app.use("/", router);
+app.use("/users", userRouter);
 
 // favicon
 app.get("/favicon.ico", (req, res) => {

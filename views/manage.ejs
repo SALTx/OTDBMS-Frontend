@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>User management</title>
+    <link rel="stylesheet" href="css/manage.css" />
   </head>
   <body>
     <% if (session.user && session.user.accountType !== 'Admin') { %>
@@ -17,43 +18,128 @@
     <table>
       <thead>
         <tr>
-          <th>ID</th>
+          <th>Username</th>
+          <th>Password</th>
           <th>Name</th>
+          <th>Account type</th>
           <th>Actions</th>
         </tr>
       </thead>
       <tbody>
         <% users.forEach(function(user) { %>
         <tr>
-          <td><%= user.username %></td>
-          <td><%= user.name %></td>
+          <td><%- user.username %></td>
+          <td><%- user.password %></td>
+          <td><%- user.name %></td>
+          <td><%- user.accountType %></td>
           <td>
-            <button onclick="retrieveUser(<%= user.id %>)">Retrieve</button>
-            <button onclick="updateUser(<%= user.id %>)">Update</button>
-            <button onclick="deleteUser(<%= user.id %>)">Delete</button>
+            <button onclick="retrieveUser('<%= user.username %>')">
+              Retrieve
+            </button>
+            <button onclick="updateUser('<%= user.username %>')">Update</button>
+            <button onclick="deleteUser('<%= user.username %>')">Delete</button>
           </td>
         </tr>
         <% }); %>
+        <tr>
+          <td><input type="text" id="username" placeholder="Username" /></td>
+          <td><input type="text" id="password" placeholder="Password" /></td>
+          <td><input type="text" id="name" placeholder="Name" /></td>
+          <td>
+            <select id="accountType">
+              <option value="Admin">Admin</option>
+              <option value="Teacher">Teacher</option>
+              <option value="Guest">Guest</option>
+            </select>
+          </td>
+          <td>
+            <button onclick="createUser()">Create</button>
+          </td>
+        </tr>
       </tbody>
     </table>
 
     <button onclick="createUser()">Create User</button>
     <%- include('partials/footer') %>
+    <script src="/js/jquery-3.7.0.min.js"></script>
     <script>
-      function retrieveUser(id) {
+      function retrieveUser(username) {
         // TODO: implement retrieve user functionality
       }
 
-      function updateUser(id) {
+      function updateUser(username) {
         // TODO: implement update user functionality
       }
 
-      function deleteUser(id) {
-        // TODO: implement delete user functionality
+      function deleteUser(username) {
+        $.ajax({
+          url: `/users/${username}`,
+          method: "DELETE",
+        }).done(function (data, textStatus, xhr) {
+          if (xhr.status === 200) {
+            alert("User deleted successfully");
+            window.location.reload();
+          } else {
+            alert("User deletion failed: " + xhr.statusText);
+            console.log(xhr);
+          }
+        });
       }
 
       function createUser() {
-        // TODO: implement create user functionality
+        const username = $("#username").val();
+        const password = $("#password").val();
+        const name = $("#name").val();
+        const accountType = $("#accountType").val();
+
+        //! validation: check if all fields are filled
+        if (!username || !password || !name || !accountType) {
+          alert("Please fill in all fields");
+          return;
+        }
+
+        //! validation: check if username is unique
+        const usernames = [];
+        $("td:nth-child(1)").each(function () {
+          usernames.push($(this).text());
+        });
+        if (usernames.includes(username)) {
+          alert("Username already exists");
+          $("#username").css("border-color", "red");
+          return;
+        }
+
+        //! validation: check if password is at least 8 characters long
+        if (password.length < 8) {
+          alert("Password must be at least 8 characters long");
+          $("#password").css("border-color", "red");
+          return;
+        }
+
+        //! validation: check if name is at least 2 characters long
+        if (name.length < 2) {
+          alert("Name must be at least 2 characters long");
+          return;
+        }
+
+        $.ajax({
+          url: "/users",
+          method: "POST",
+          data: {
+            username: $("#username").val(),
+            name: $("#name").val(),
+            password: $("#password").val(),
+            accountType: $("#accountType").val(),
+          },
+        }).done(function (data, textStatus, xhr) {
+          if (xhr.status === 200) {
+            alert("User created successfully");
+            window.location.reload();
+          } else {
+            alert("User creation failed: " + xhr.statusText);
+            console.log(xhr);
+          }
+        });
       }
     </script>
   </body>

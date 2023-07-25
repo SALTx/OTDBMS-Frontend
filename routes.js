@@ -19,8 +19,10 @@ router.get("/", (req, res) => {
   });
 });
 
-router.get("/studentsview", async (req, res) => {
-  const studentsview = await database.executeQuery("SELECT * FROM studentsview");
+router.get("/students", async (req, res) => {
+  const studentsview = await database.executeQuery(
+    "SELECT * FROM studentsview"
+  );
   const partialExists = fs.existsSync(`views/partials/controls/students.ejs`);
 
   res.render("universal", {
@@ -32,7 +34,7 @@ router.get("/studentsview", async (req, res) => {
   });
 });
 
-router.get("/overseasprogramsview", async (req, res) => {
+router.get("/overseasprograms", async (req, res) => {
   const overseasprogramsview = await database.executeQuery(
     "SELECT * FROM overseasprogramsview"
   );
@@ -94,9 +96,7 @@ router.get("/oimpdetails", async (req, res) => {
 
 router.get("/audittable", async (req, res) => {
   const audittable = await database.executeQuery("SELECT * FROM audittable");
-  const partialExists = fs.existsSync(
-    `views/partials/controls/audittable.ejs`
-  );
+  const partialExists = fs.existsSync(`views/partials/controls/audittable.ejs`);
 
   res.render("universal", {
     page: "Audit Table",
@@ -106,7 +106,6 @@ router.get("/audittable", async (req, res) => {
     partialExists,
   });
 });
-
 
 router.get("/resources", async (req, res) => {
   res.render("resources", {
