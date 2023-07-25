@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/css/universal.css" />
     <title><%- page %></title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+
     <!-- define data in the client-side scope -->
     <script>
       const data = <%- JSON.stringify(data) %>;
@@ -50,13 +57,14 @@
       Count:
       <span id="row-count">
         <script>
-          const rowCount = document.querySelectorAll("#data-table tbody tr").length;
+          const rowCount = document.querySelectorAll(
+            "#data-table tbody tr"
+          ).length;
           const columnName = document.querySelector("#data-table th").innerText;
           document.write(rowCount + " " + columnName);
         </script>
       </span>
     </h3>
-    
 
     <div class="checkbox-container">
       <span class="checkbox-title">Options:</span>
