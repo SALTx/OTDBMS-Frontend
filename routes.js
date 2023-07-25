@@ -59,7 +59,7 @@ router.get("/", (req, res) => {
       "SELECT * FROM tripdetails"
     );
     const partialExists = fs.existsSync(
-      `views/partials/controls/tripsview.ejs`
+      `views/partials/controls/tripdetails.ejs`
     );
 
     res.render("universal", {
