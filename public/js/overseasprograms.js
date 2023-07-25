@@ -20,3 +20,20 @@ programTypeCheckboxes.forEach((checkbox) => {
     });
   });
 });
+
+// populate the select box
+$(document).ready(function () {
+  // Get the countries from the API
+  $.get("/api/countries", function (countries) {
+    console.log(countries);
+    // Loop through the countries and add an option for each one
+    countries.forEach(function (country) {
+      $("#country-select").append(
+        $("<option>", {
+          value: country.id,
+          text: country.name,
+        })
+      );
+    });
+  });
+});
