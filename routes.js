@@ -23,7 +23,7 @@ router.get("/students", async (req, res) => {
   const studentsview = await database.executeQuery(
     "SELECT * FROM studentsview"
   );
-  const partialExists = fs.existsSync(`views/partials/controls/students.ejs`);
+  const partialExists = fs.existsSync(`views/partials/controls/studentsview.ejs`);
 
   res.render("universal", {
     page: "Students",
