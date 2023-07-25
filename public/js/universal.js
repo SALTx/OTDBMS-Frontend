@@ -67,9 +67,12 @@ $(document).ready(() => {
       return;
     }
 
-    renderTable(filteredData);
-  });
+    renderTable(filteredData); // Call renderTable function after filtering the data
 
+    // change the value of span with id "row-count" to number of visible rows in the table
+    const rowCount = $("#data-table tbody tr:visible").length;
+    $("#row-count").text(rowCount);
+  });
   // Clear the search input when the sort column is changed
   $("#sort-select").on("change", () => {
     $("#search-input").val("");
@@ -77,6 +80,7 @@ $(document).ready(() => {
 });
 
 function renderTable(data) {
+  console.log("The rendertable function was called" + Math.random());
   const table = document.getElementById("data-table");
   const tbody = table.querySelector("tbody");
 
@@ -96,6 +100,10 @@ function renderTable(data) {
 
     tbody.appendChild(tr);
   });
+
+  // change the value of span with id "row-count" to number of visible rows in the table
+  const rowCount = $("#data-table tbody tr:visible").length;
+  $("#row-count").text(rowCount);
 }
 
 // event listener for the import buttons
