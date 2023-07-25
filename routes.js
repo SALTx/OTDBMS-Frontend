@@ -1,17 +1,17 @@
 import express from "express";
 import database from "./database.js";
 import fs from "fs";
-import chalk from "chalk";
 import moment from "moment";
 
 const router = express.Router();
 
-// Middleware to add session to res.locals
+//! Middleware to add session to res.locals
 router.use((req, res, next) => {
   res.locals.session = req.session;
   next();
 });
 
+//! Render index page
 router.get("/", (req, res) => {
   res.render("index", {
     page: "index",
@@ -19,64 +19,61 @@ router.get("/", (req, res) => {
   });
 });
 
-router.get("/students", async (req, res) => {
-  const table = "studentsview";
-  const studentsview = await database.executeQuery(`SELECT * FROM ${table}`);
-  const partialExists = fs.existsSync(`views/partials/controls/${table}.ejs`);
+//! START Universal pages
+{
+  //! Students
+  router.get("/students", async (req, res) => {
+    const table = "studentsview";
+    const studentsview = await database.executeQuery(`SELECT * FROM ${table}`);
+    const partialExists = fs.existsSync(`views/partials/controls/${table}.ejs`);
 
-  res.render("universal", {
-    page: "Students",
-    table,
-    title: "Students",
-    data: studentsview,
-    partialExists: partialExists,
+    res.render("universal", {
+      page: "Students",
+      table,
+      title: "Students",
+      data: studentsview,
+      partialExists: partialExists,
+    });
   });
-});
 
-router.get("/overseasprograms", async (req, res) => {
-  const table = "overseasprogramsview";
-  const overseasprogramsview = await database.executeQuery(
-    `SELECT * FROM ${table}`
-  );
-  const partialExists = fs.existsSync(`views/partials/controls/${table}.ejs`);
+  //! Overseas Programs
+  router.get("/overseasprograms", async (req, res) => {
+    const table = "overseasprogramsview";
+    const overseasprogramsview = await database.executeQuery(
+      `SELECT * FROM ${table}`
+    );
+    const partialExists = fs.existsSync(`views/partials/controls/${table}.ejs`);
 
-  res.render("universal", {
-    page: "Overseas Programs",
-    table,
-    title: "Overseas Programs",
-    data: overseasprogramsview,
-    partialExists,
+    res.render("universal", {
+      page: "Overseas Programs",
+      table,
+      title: "Overseas Programs",
+      data: overseasprogramsview,
+      partialExists,
+    });
   });
-});
 
-router.get("/trips", async (req, res) => {
-  const trips = await database.executeQuery("SELECT * FROM trips");
-  const partialExists = fs.existsSync(`views/partials/controls/trips.ejs`);
+  //! Trips
+  router.get("/trips", async (req, res) => {
+    const tripdetails = await database.executeQuery(
+      "SELECT * FROM tripdetails"
+    );
+    const partialExists = fs.existsSync(
+      `views/partials/controls/tripsview.ejs`
+    );
 
-  res.render("universal", {
-    page: "Trips",
-    table: "trips",
-    title: "Trips",
-    data: trips,
-    partialExists,
+    res.render("universal", {
+      page: "Trip Details",
+      table: "tripdetails",
+      title: "Trip Details",
+      data: tripdetails,
+      partialExists,
+    });
   });
-});
+}
+//! END Universal pages
 
-router.get("/tripdetails", async (req, res) => {
-  const tripdetails = await database.executeQuery("SELECT * FROM tripdetails");
-  const partialExists = fs.existsSync(
-    `views/partials/controls/tripdetails.ejs`
-  );
-
-  res.render("universal", {
-    page: "Trip Details",
-    table: "tripdetails",
-    title: "Trip Details",
-    data: tripdetails,
-    partialExists,
-  });
-});
-
+//? OIMP details ?//
 router.get("/oimpdetails", async (req, res) => {
   const oimpdetails = await database.executeQuery("SELECT * FROM oimpdetails");
   const partialExists = fs.existsSync(
@@ -92,6 +89,7 @@ router.get("/oimpdetails", async (req, res) => {
   });
 });
 
+//? Audit Table ?//
 router.get("/audittable", async (req, res) => {
   const audittable = await database.executeQuery("SELECT * FROM audittable");
   const partialExists = fs.existsSync(`views/partials/controls/audittable.ejs`);
@@ -105,6 +103,7 @@ router.get("/audittable", async (req, res) => {
   });
 });
 
+//! Resources
 router.get("/resources", async (req, res) => {
   res.render("resources", {
     page: "Resources",
@@ -122,39 +121,46 @@ router.get("/manage", async (req, res) => {
   });
 });
 
-// Auth routes
-router.get("/login", (req, res) => {
-  const { error } = req.query;
+//! START Auth routes
+{
+  //! Login page
+  router.get("/login", (req, res) => {
+    const { error } = req.query;
 
-  res.render("login", {
-    page: "Login",
-    title: "Login",
-    error: error ? "Invalid username or password" : "",
+    res.render("login", {
+      page: "Login",
+      title: "Login",
+      error: error ? "Invalid username or password" : "",
+    });
   });
-});
 
-router.post("/login", (req, res) => {
-  const { username, password } = req.body;
-  const query = `SELECT * FROM users WHERE username = '${username}' AND BINARY password = '${password}'`;
-  database.executeQuery(query).then((result) => {
-    if (result.length == 1) {
-      delete result[0].password;
-      req.session.user = result[0];
-      req.session.save();
+  //! Login action
+  router.post("/login", (req, res) => {
+    const { username, password } = req.body;
+    const query =
+      "SELECT * FROM users WHERE username = ? AND BINARY password = ?";
+    const values = [username, password];
+    database.executeQuery(query, values).then((result) => {
+      if (result.length == 1) {
+        delete result[0].password;
+        req.session.user = result[0];
+        req.session.save();
 
-      res.redirect("/");
-    } else {
-      res.redirect("/login?error=1");
-    }
+        res.redirect("/");
+      } else {
+        res.redirect("/login?error=1");
+      }
+    });
   });
-});
 
-router.get("/logout", (req, res) => {
-  req.session.destroy();
-  res.redirect("/");
-});
+  //! Logout action
+  router.get("/logout", (req, res) => {
+    req.session.destroy();
+    res.redirect("/");
+  });
+}
+//! END Auth routes
 
-// Database routes
 router.get("/database/views/kpi/:num", async (req, res) => {
   const num = req.params.num;
   if (num < 1 || num > 4) {
@@ -173,14 +179,26 @@ router.get("/api/countries", async (req, res) => {
 // TODO: remove space from user's name or just use username
 // uploading file
 router.post("/upload", (req, res) => {
-  console.log(req.files);
   if (!req.files || Object.keys(req.files).length === 0) {
     res.send("No files were uploaded.");
     return;
   } else {
-    // rename the file to user's name and timestamp
     const file = req.files.file;
     const filetype = file.name.split(".")[1];
+    const filesize = file.size;
+    const allowedTypes = ["jpg", "jpeg", "png", "gif"];
+    const allowedSize = 1024 * 1024; // 1 MB
+
+    if (!allowedTypes.includes(filetype)) {
+      res.send("Invalid file type.");
+      return;
+    }
+
+    if (filesize > allowedSize) {
+      res.send("File size too large.");
+      return;
+    }
+
     const timestamp = moment().format("YYYYMMDD_HHmm");
     const filename = `${req.body.name}_${timestamp}.${filetype}`;
 

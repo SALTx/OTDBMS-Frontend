@@ -16,12 +16,28 @@ connection.connect(function (err) {
   console.log(chalk.green("Database is connected successfully !"));
 });
 
-async function executeQuery(query) {
+// async function executeQuery(query) {
+//   return new Promise((resolve, reject) => {
+//     connection.query(query, function (err, rows, fields) {
+//       if (err) reject(err);
+//       resolve(rows);
+//     });
+//   });
+// }
+
+async function executeQuery(query, values = []) {
   return new Promise((resolve, reject) => {
-    connection.query(query, function (err, rows, fields) {
-      if (err) reject(err);
-      resolve(rows);
-    });
+    if (values.length > 0) {
+      connection.query(query, values, function (err, rows, fields) {
+        if (err) reject(err);
+        resolve(rows);
+      });
+    } else {
+      connection.query(query, function (err, rows, fields) {
+        if (err) reject(err);
+        resolve(rows);
+      });
+    }
   });
 }
 

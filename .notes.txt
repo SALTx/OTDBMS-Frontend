@@ -7,9 +7,7 @@
 - add user name after login
 - when changing search by the columns re-appear
 - implement search for countries in the select menu
-- add number of rows that are being displayed in the table
 - improve the search for students page (stage isnt searching properly)
-- add dropdown menu for some search options
 - add aggregated values in front of the kpi label in index
 - add values for the individual bars, over the bar > in a table > besides the course name
 - add sorting functionality (alphabetical, value)
@@ -34,3 +32,5 @@ SQL notes
 - add code to search overseas programs by quarter
 
 [DONE] add favicon to the website
+[DONE] add number of rows that are being displayed in the table
+[DONE] add dropdown menu for some search options

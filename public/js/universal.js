@@ -117,10 +117,9 @@ function renderTable(data) {
 
 // event listener for the import buttons
 const importButtons = $(".import-button");
-importButtons.forEach((button) => {
-  button.addEventListener("click", async (event) => {});
+importButtons.each(function () {
+  $(this).on("click", async (event) => {});
 });
-
 // Placeholder event listener for "Export" buttons
 const exportButtons = document.querySelectorAll(".export-button");
 exportButtons.forEach((button) => {
