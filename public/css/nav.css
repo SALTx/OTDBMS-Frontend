@@ -90,4 +90,18 @@ nav span {
   nav li {
     text-align: center;
   }
+  
+  /* Additional media queries for smaller screens */
+  @media (max-width: 480px) {
+    nav a {
+      font-size: 18px;
+    }
+  }
+  
+  /* Additional media queries for even smaller screens */
+  @media (max-width: 360px) {
+    nav a {
+      font-size: 16px;
+    }
+  }
 }

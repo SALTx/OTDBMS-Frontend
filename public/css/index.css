@@ -109,4 +109,17 @@ footer {
   #KPI-overview p {
     font-size: 0.8em;
   }
+
+  /* Adjust font size of the data label (bar name) for smaller screens */
+  .chartjs-plugin-datalabels {
+    font-size: 12px;
+  }
+  
+  /* Additional media queries for even smaller screens */
+  @media (max-width: 480px) {
+    /* Further decrease font size for even smaller screens if needed */
+    .chartjs-plugin-datalabels {
+      font-size: 10px;
+    }
+  }
 }

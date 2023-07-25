@@ -12,6 +12,7 @@ td {
   border: 2px solid black; /* Increase border thickness */
   padding: 10px;
   text-align: left;
+  font-size: 16px; /* Default font size for table cells */
 }
 
 /* Table header */
@@ -37,7 +38,7 @@ thead {
 }
 
 /* Center the "Students" heading */
-h2 {
+h2, h3, h4, h5, h6 {
   text-align: center;
 }
 
@@ -95,15 +96,13 @@ h2 {
 /* Responsive styles */
 @media screen and (max-width: 600px) {
   /* Adjust styles for smaller screens if needed */
-}
+  td {
+    font-size: 14px; /* Reduce font size for table cells on smaller screens */
+  }
 
-/* Additional styles for the tables */
-.tables-container {
-  display: flex;
-  justify-content: space-between;
-}
-
-.table-container {
-  flex-basis: calc(50% - 10px);
-  margin-bottom: 20px;
+  #sort-search label[for="sort-select"],
+  #sort-search label[for="search-input"],
+  #sort-search button#search-button {
+    font-size: 18px; /* Adjust font size for sort and search labels and button on smaller screens */
+  }
 }
