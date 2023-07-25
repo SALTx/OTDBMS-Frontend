@@ -4,16 +4,24 @@
 <nav>
   <ul>
     <li><a href="/">Home</a></li>
-    <li><a href="/students">Students</a></li>
-    <li><a href="/overseasprograms">Overseas Programs</a></li>
-    <li><a href="/trips">Trip details</a></li>
-    <li><a href="/resources">Resources</a></li>
-    <% if(session.user && session.user.accountType === 'Admin') { %>
-    <li><a href="/manage">Manage</a></li>
-    <% } %> <% if (session.user) { %>
-    <li><a href="/logout">Log out</a></li>
+    <li class="dropdown">
+      <a href="#">Tables</a>
+      <ul class="dropdown-content">
+        <li><a href="/students">Students</a></li>
+        <li><a href="/overseasprograms">Overseas Programs</a></li>
+        <li><a href="/trips">Trip Details</a></li>
+        <li><a href="/oimpdetails">Immersion Trips Details</a></li>
+        <li><a href="/audittable">Audit Recorddds
+        </a></li>
+      </ul>
+    </li>
+    <% if (session.user && session.user.accountType === 'Admin') { %>
+      <li><a href="/manage">Manage</a></li>
+    <% } %>
+    <% if (session.user) { %>
+      <li><a href="/logout">Log out</a></li>
     <% } else { %>
-    <li><a href="/login">Log in</a></li>
+      <li><a href="/login">Log in</a></li>
     <% } %>
   </ul>
 </nav>
