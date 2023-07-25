@@ -1,74 +1,13 @@
-add favicon to the website
-
-
-add more relevant information to the kpi views
-
-check every page for
+- check every page for
     - imports
     - titles
-    - meta tags
-    
-
-
-
-//! rewrite the controls for individual fields using the database methods such as getEnumValues and getDistinctCourseCodes
-
-async function getDistinctCourseCodes() {
-  const rows = await executeQuery(
-    `SELECT DISTINCT \`Course Code\` FROM students;`
-  );
-  return rows.map((row) => row.Field);
-}
-
-
-[
-  "EGDF09",
-  "EGDF11",
-  "EGDF12",
-  "EGDF13",
-  "EGDF17",
-  "EGDF19",
-  "EGDF20",
-  "EGDF21",
-  "EGDF22",
-  "EGDF94",
-  "EGDFPA",
-]
-
-user restrictions
-admins can
-  - view tables
-  - import/export
-  - modify users
-  
-
-
-
-<<Presentation notes>>
-  Project objectives
-    make a gui application that allows for codeless sql database manipulation
-  features
-    - User friendly gui
-    - Live data visualisation
-    - Tracking based on user defined KPIs
-    - import/export data from XML, XLS, JSON, CSV
-    - codeless database manipulation
-    - Data visualisation with graphs and charts
-
-  problems faced
-    - Figuring out how to extract data from XLSX files and convert it to JSON
-    - Figuring out how to use the chart.js library
-    - converting loose files into JSON and then into sql queries to be executed
-    - 
-
-
-    - add user controls for admin
+    - meta tags  
+- rewrite the controls for individual fields using the database methods such as getEnumValues and getDistinctCourseCodes
+- add user controls for admin
 - add user name after login
 - when changing search by the columns re-appear
 - implement search for countries in the select menu
-- add number of rows that are being displayed in the table
 - improve the search for students page (stage isnt searching properly)
-- add dropdown menu for some search options
 - add aggregated values in front of the kpi label in index
 - add values for the individual bars, over the bar > in a table > besides the course name
 - add sorting functionality (alphabetical, value)
@@ -81,7 +20,6 @@ admins can
 - copy edit page from the old project
 
 Middle notes
-
 - Add blue values to KPI graphs
 
 SQL notes
@@ -92,3 +30,7 @@ SQL notes
 - add oci countries to the kpi 1
 - count by program type
 - add code to search overseas programs by quarter
+
+[DONE] add favicon to the website
+[DONE] add number of rows that are being displayed in the table
+[DONE] add dropdown menu for some search options

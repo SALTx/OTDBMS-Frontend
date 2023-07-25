@@ -48,18 +48,32 @@ function renderKpiGraph(kpiNumber) {
                 interactive: true,
               },
             },
+            datalabels: {
+              // Display the value of each bar as a label
+              display: true,
+              color: "white",
+              font: {
+                weight: "bold",
+              },
+              formatter: (value) => {
+                return value;
+              },
+            },
           },
           onClick: (event, element) => {
             const chart = element.chart;
-            const datasetIndex = element.datasetIndex;
-            const meta = chart.getDatasetMeta(datasetIndex);
-            const hidden = meta.hidden === null ? false : !meta.hidden;
+            if (chart) {
+              const datasetIndex = element.datasetIndex;
+              const meta = chart.getDatasetMeta(datasetIndex);
+              const hidden = meta.hidden === null ? false : !meta.hidden;
 
-            meta.hidden = hidden;
-            chart.update();
+              meta.hidden = hidden;
+              chart.update();
+            }
           },
         },
       });
+      console.log(kpiChart);
     },
   });
 }

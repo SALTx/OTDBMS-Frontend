@@ -46,6 +46,17 @@
         </tbody>
       </table>
     </div>
+    <h2>
+      Count:
+      <span id="row-count">
+        <script>
+          const rowCount = document.querySelectorAll(
+            "#data-table tbody tr"
+          ).length;
+          document.write(rowCount);
+        </script>
+      </span>
+    </h2>
 
     <div class="checkbox-container">
       <span class="checkbox-title">Options:</span>
@@ -110,11 +121,6 @@
     </div>
     <% } %> <%- include('partials/footer') %>
     <script src="/js/jquery-3.7.0.min.js"></script>
-    <script src="/js/universal.js" type="module"></script>
+    <script src="/js/universal.js"></script>
   </body>
 </html>
-
-<script>
-  // count the number of rows displayed in the table
-  const rowCount = document.querySelectorAll("#data-table tbody tr").length;
-</script>
