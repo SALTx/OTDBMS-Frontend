@@ -20,14 +20,13 @@ router.get("/", (req, res) => {
 });
 
 router.get("/students", async (req, res) => {
-  const studentsview = await database.executeQuery(
-    "SELECT * FROM studentsview"
-  );
-  const partialExists = fs.existsSync(`views/partials/controls/students.ejs`);
+  const table = "studentsview";
+  const studentsview = await database.executeQuery(`SELECT * FROM ${table}`);
+  const partialExists = fs.existsSync(`views/partials/controls/${table}.ejs`);
 
   res.render("universal", {
     page: "Students",
-    table: "studentsview",
+    table,
     title: "Students",
     data: studentsview,
     partialExists: partialExists,
@@ -35,16 +34,15 @@ router.get("/students", async (req, res) => {
 });
 
 router.get("/overseasprograms", async (req, res) => {
+  const table = "overseasprogramsview";
   const overseasprogramsview = await database.executeQuery(
-    "SELECT * FROM overseasprogramsview"
+    `SELECT * FROM ${table}`
   );
-  const partialExists = fs.existsSync(
-    `views/partials/controls/overseasprograms.ejs`
-  );
+  const partialExists = fs.existsSync(`views/partials/controls/${table}.ejs`);
 
   res.render("universal", {
     page: "Overseas Programs",
-    table: "overseasprogramsview",
+    table,
     title: "Overseas Programs",
     data: overseasprogramsview,
     partialExists,
