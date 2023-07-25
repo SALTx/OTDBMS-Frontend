@@ -3,6 +3,7 @@
 <table class="checkbox-table">
   <tr>
     <th>Program Type</th>
+    <th>Country</th>
   </tr>
   <tr>
     <td>
@@ -15,6 +16,16 @@
         />
         Overseas educational trip
       </label>
+    </td>
+    <td>
+      <select
+        class="country-select"
+        id="country-select"
+        name="country"
+        data-live-search="true"
+      >
+        <option value="">All</option>
+      </select>
     </td>
   </tr>
   <tr>
@@ -96,18 +107,6 @@
     </td>
   </tr>
 </table>
-
-<!-- add a select box for countries and get countries from /api/countries and also make the countries select box searchable -->
-<div class="form-group">
-  <label for="country-select">Country</label>
-  <select
-    class="form-control"
-    id="country-select"
-    name="country"
-    data-live-search="true"
-  >
-    <option value="">All</option>
-  </select>
 
   <script src="/js/overseasprograms.js" defer></script>
 </div>
