@@ -1,8 +1,8 @@
 import dotenv from "dotenv";
-dotenv.config();
-
 import mysql from "mysql";
 import chalk from "chalk";
+
+dotenv.config();
 
 const connection = mysql.createConnection({
   host: process.env.DATABASE_HOST,
@@ -15,15 +15,6 @@ connection.connect(function (err) {
   if (err) throw err;
   console.log(chalk.green("Database is connected successfully !"));
 });
-
-// async function executeQuery(query) {
-//   return new Promise((resolve, reject) => {
-//     connection.query(query, function (err, rows, fields) {
-//       if (err) reject(err);
-//       resolve(rows);
-//     });
-//   });
-// }
 
 async function executeQuery(query, values = []) {
   return new Promise((resolve, reject) => {
