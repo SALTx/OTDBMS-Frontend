@@ -165,6 +165,11 @@ router.get("/database/views/kpi/:num", async (req, res) => {
   res.send(kpi);
 });
 
+router.get("/api/countries", async (req, res) => {
+  const countries = await database.executeQuery("SELECT * FROM countries");
+  res.send(countries);
+});
+
 // TODO: remove space from user's name or just use username
 // uploading file
 router.post("/upload", (req, res) => {
