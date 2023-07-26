@@ -3,8 +3,6 @@
     - titles
     - meta tags  
 - rewrite the controls for individual fields using the database methods such as getEnumValues and getDistinctCourseCodes
-- add user controls for admin
-- add user name after login
 - when changing search by the columns re-appear
 - implement search for countries in the select menu
 - improve the search for students page (stage isnt searching properly)
@@ -15,8 +13,6 @@
 - finish up the trips page and make it possible for staff accounts to view their own diplomas
 - hide sensitive information from guests (student admin numbers, names, etc) (maybe censor off the last few letters)
 - imform users that they can hover over the bars to view more information in the graph
-- make tests for the api
-- add password security
 - copy edit page from the old project
 
 Middle notes
@@ -34,3 +30,7 @@ SQL notes
 [DONE] add favicon to the website
 [DONE] add number of rows that are being displayed in the table
 [DONE] add dropdown menu for some search options
+[DONE] add user name after login
+[DONE] add user controls for admin
+[DONE] add password security
+[DONE] make tests for the api

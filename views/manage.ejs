@@ -43,23 +43,24 @@
           <td>
             <input
               type="text"
-              value="<%- user.username %>"
+              value="<%- user.password %>"
               id="<%- user.username %>_password"
             />
           </td>
           <td>
             <input
               type="text"
-              value="<%- user.username %>"
+              value="<%- user.name %>"
               id="<%- user.username %>_name"
             />
           </td>
           <td>
-            <input
-              type="text"
-              value="<%- user.username %>"
-              id="<%- user.username %>_accountType"
-            />
+            <select name="accountType" id="<%- user.username %>_accountType">
+              <option value="Admin" <% if (user.accountType === 'Admin') { %>selected<% } %>>Admin</option>
+              <option value="Teacher" <% if (user.accountType === 'Teacher') { %>selected<% } %>>Teacher</option>
+              <option value="Guest" <% if (user.accountType === 'Guest') { %>selected<% } %>>Guest</option>
+              <% console.log(user.accountType); %>
+            </select>
           </td>
           <td>
             <button onclick="retrieveUser('<%= user.username %>')">
@@ -96,7 +97,24 @@
       }
 
       function updateUser(username) {
-        // TODO: implement update user functionality
+        $.ajax({
+          url: `/users/${username}`,
+          method: "PUT",
+          data: {
+            username: $(`#${username}_username`).val(),
+            password: $(`#${username}_password`).val(),
+            name: $(`#${username}_name`).val(),
+            accountType: $(`#${username}_accountType`).val(),
+          },
+        }).done(function (data, textStatus, xhr) {
+          if (xhr.status === 200) {
+            alert("User updated successfully");
+            window.location.reload();
+          } else {
+            alert("User update failed: " + xhr.statusText);
+            console.log(xhr);
+          }
+        });
       }
 
       function deleteUser(username) {

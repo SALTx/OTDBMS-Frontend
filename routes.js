@@ -93,7 +93,7 @@ router.get("/oimpdetails", async (req, res) => {
 //!! Admin: Audit table
 router.get("/audittable", async (req, res) => {
   // if user is not logged in or is not an admin, redirect to home page
-  if (!req.session.user || req.session.user.role != "admin") {
+  if (!req.session.user || req.session.user.accountType != "Admin") {
     res.redirect("/");
     return;
   }
@@ -119,6 +119,12 @@ router.get("/resources", async (req, res) => {
 });
 
 router.get("/manage", async (req, res) => {
+  // if user is not logged in is not an admin, redirect to home page
+  if (!req.session.user || req.session.user.accountType != "Admin") {
+    res.redirect("/");
+    return;
+  }
+
   const users = await database.executeQuery("SELECT * FROM users");
 
   res.render("manage", {
