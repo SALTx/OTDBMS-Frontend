@@ -2,6 +2,7 @@ import express from "express";
 import database from "./database.js";
 import fs from "fs";
 import moment from "moment";
+import bcrypt from "bcrypt";
 
 const router = express.Router();
 
@@ -71,9 +72,8 @@ router.get("/", (req, res) => {
     });
   });
 }
-//! END Universal pages
 
-//? OIMP details ?//
+//! Oimp Details
 router.get("/oimpdetails", async (req, res) => {
   const oimpdetails = await database.executeQuery("SELECT * FROM oimpdetails");
   const partialExists = fs.existsSync(
@@ -88,9 +88,16 @@ router.get("/oimpdetails", async (req, res) => {
     partialExists,
   });
 });
+//! END Universal pages
 
-//? Audit Table ?//
+//!! Admin: Audit table
 router.get("/audittable", async (req, res) => {
+  // if user is not logged in or is not an admin, redirect to home page
+  if (!req.session.user || req.session.user.role != "admin") {
+    res.redirect("/");
+    return;
+  }
+
   const audittable = await database.executeQuery("SELECT * FROM audittable");
   const partialExists = fs.existsSync(`views/partials/controls/audittable.ejs`);
 
@@ -136,7 +143,7 @@ router.get("/manage", async (req, res) => {
 
   //! Login action
   router.post("/login", (req, res) => {
-    const { username, password } = req.body;
+    let { username, password } = req.body;
     const query =
       "SELECT * FROM users WHERE username = ? AND BINARY password = ?";
     const values = [username, password];

@@ -31,6 +31,11 @@
   </head>
   <body>
     <%- include('partials/nav') %>
+    <h2>
+      <% if (session.user) { %> Currently logged in as <%= session.user.username
+      %> <% } else { %> You are not logged in, some fields may be redacted to
+      protect sensitive information. <% } %>
+    </h2>
     <h2><%- page %></h2>
 
     <div class="table-container">

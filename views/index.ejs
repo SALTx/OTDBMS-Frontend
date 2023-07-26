@@ -15,6 +15,11 @@
   <body>
     <%- include('partials/nav') %>
     <h2>Home page</h2>
+    <h3>
+      <% if(session.user) { %> Welcome back, <%= session.user.username %> <% }
+      else { %> You are not logged in, <a href="/login">login now</a>
+      <% } %>
+    </h3>
     <div id="KPI-overview">
       <div id="kpi1">
         <h2>Kpi 1</h2>
