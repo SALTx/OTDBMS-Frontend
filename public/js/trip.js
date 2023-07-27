@@ -7,8 +7,9 @@ studyStageCheckboxes.forEach((checkbox) => {
       .filter((checkbox) => checkbox.checked)
       .map((checkbox) => checkbox.dataset.stage);
 
-    // Get all the rows within the table's tbody
-    const rows = document.querySelectorAll("tbody tr");
+    const tripRows = document.querySelectorAll(
+      ".checkbox-table + .trip-table tbody tr",
+    );
 
     // Iterate over each row
     rows.forEach((row) => {
