@@ -11,20 +11,14 @@
 
     <h1>Resources</h1>
     <h4>Import templates</h4>
-    <ul>
-      <li>
-        Download XML import template
-        <ul>
-          <li><a href="">Students</a></li>
-          <li><a href="">Overseas Programs</a></li>
-          <li><a href=""></a></li>
-          <li><a href=""></a></li>
-        </ul>
-      </li>
-    </ul>
+    Download import templates for the following file formats: <% let fileFormats
+    = ['XML', 'XLS', 'JSON', 'CSV'] %> <% fileFormats.forEach((fileFormat) => {
+    %>
+    <a href="/resources/download/<%= fileFormat %>"><%= fileFormat %></a>
+    <% }) %>
 
     <h4>Reports</h4>
-
+    <a href="/resources/reports/trips">Download reports on trips</a>
     <%- include('partials/footer') %>
   </body>
 </html>
