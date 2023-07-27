@@ -75,17 +75,16 @@ router.get("/", (req, res) => {
 
 //! Oimp Details
 router.get("/oimpdetails", async (req, res) => {
-  const oimpdetails = await database.executeQuery("SELECT * FROM oimpdetails");
-  const partialExists = fs.existsSync(
-    `views/partials/controls/oimpdetails.ejs`
-  );
+  const table = "oimpDetailsView";
+  const oimpdetails = await database.executeQuery(`SELECT * FROM ${table}`);
+  const partialExists = fs.existsSync(`views/partials/controls/${table}.ejs`);
 
   res.render("universal", {
     page: "Oimp Details",
-    table: "oimpdetails",
+    table,
     title: "Oimp Details",
     data: oimpdetails,
-    partialExists,
+    partialExists: partialExists,
   });
 });
 //! END Universal pages
