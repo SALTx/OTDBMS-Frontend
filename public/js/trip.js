@@ -15,7 +15,7 @@ studyStageCheckboxes.forEach((checkbox) => {
     rows.forEach((row) => {
       // Get the study stage value from the fourth cell (td) in the current row
       const rowStage = row.querySelector("td:nth-child(4)").textContent;
-      
+
       // Check if the study stage of the row is in the selected study stages
       if (checkedStages.includes(rowStage)) {
         // If the row's study stage is selected, display the row
