@@ -4,6 +4,16 @@ $(document).ready(() => {
   renderKpiGraph(3);
 });
 
+const kpi1Expected = [];
+const kpi2Expected = [];
+const kpi3Expected = [];
+
+for (let i = 0; i < 10; i++) {
+  kpi1Expected.push(Math.floor(Math.random() * 100));
+  kpi2Expected.push(Math.floor(Math.random() * 100));
+  kpi3Expected.push(Math.floor(Math.random() * 100));
+}
+
 function renderKpiGraph(kpiNumber) {
   $.ajax({
     url: `/database/views/kpi/${kpiNumber}`,
@@ -30,6 +40,18 @@ function renderKpiGraph(kpiNumber) {
               data: numStudents,
               backgroundColor: "rgba(255, 99, 132, 0.2)",
               borderColor: "rgba(255, 99, 132, 1)",
+              borderWidth: 1,
+            },
+            {
+              label: "Expected Number of Students",
+              data:
+                kpiNumber === 1
+                  ? kpi1Expected
+                  : kpiNumber === 2
+                  ? kpi2Expected
+                  : kpi3Expected,
+              backgroundColor: "rgba(54, 162, 235, 0.2)",
+              borderColor: "rgba(54, 162, 235, 1)",
               borderWidth: 1,
             },
           ],
