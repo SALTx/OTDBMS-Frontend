@@ -2,19 +2,19 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start; /* Adjust alignment as needed */
+    justify-content: flex-start; 
     min-height: 100vh;
-    margin: 0; /* Reset default margin */
+    margin: 0; 
   }
   
   h1,
   h4,
   ul {
     text-align: center;
-    font-size: 30px; /* Adjust the font size as desired */
+    font-size: 30px; 
   }
   
   ul li {
-    font-size: 24px; /* Adjust the font size as desired */
+    font-size: 24px; 
   }
   

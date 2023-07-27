@@ -1,4 +1,4 @@
-/* Reset styles for tables */
+
 table {
   border-collapse: collapse;
   width: calc(100% + 50px);
@@ -9,13 +9,13 @@ table {
 /* Table cells */
 th,
 td {
-  border: 2px solid black; /* Increase border thickness */
+  border: 2px solid black; 
   padding: 10px;
   text-align: left;
-  font-size: 16px; /* Default font size for table cells */
+  font-size: 16px; 
 }
 
-/* Table header */
+
 thead {
   position: sticky;
   top: 0;
@@ -27,14 +27,14 @@ thead {
 .table-container {
   max-height: 450px;
   overflow-y: auto;
-  margin: 20px auto; /* Increase the margin value to add space */
+  margin: 20px auto; 
   text-align: center;
 }
 
 /* Center the sort and search section */
 #sort-search {
   text-align: center;
-  margin-bottom: 40px; /* Increase the margin value to add space */
+  margin-bottom: 40px; 
 }
 
 /* Center the "Students" heading */
@@ -42,7 +42,7 @@ h2, h3, h4, h5, h6 {
   text-align: center;
 }
 
-/* Checkbox container */
+
 .checkbox-container {
   display: flex;
   flex-wrap: wrap;
@@ -56,7 +56,7 @@ h2, h3, h4, h5, h6 {
 }
 
 .checkbox-container label {
-  margin: 5px; /* Adjust the margin as desired */
+  margin: 5px; 
   display: flex;
   align-items: center;
 }
@@ -78,7 +78,7 @@ h2, h3, h4, h5, h6 {
 /* Sort by */
 #sort-select,
 #sort-select option {
-  font-size: 24px; /* Increase the font size for Sort by */
+  font-size: 24px; 
 }
 
 /* Search */
@@ -95,7 +95,7 @@ h2, h3, h4, h5, h6 {
 
 /* Responsive styles */
 @media screen and (max-width: 600px) {
-  /* Adjust styles for smaller screens if needed */
+
   td {
     font-size: 14px; /* Reduce font size for table cells on smaller screens */
   }
@@ -103,6 +103,6 @@ h2, h3, h4, h5, h6 {
   #sort-search label[for="sort-select"],
   #sort-search label[for="search-input"],
   #sort-search button#search-button {
-    font-size: 18px; /* Adjust font size for sort and search labels and button on smaller screens */
+    font-size: 18px; 
   }
 }

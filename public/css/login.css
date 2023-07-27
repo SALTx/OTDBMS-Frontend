@@ -2,20 +2,20 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start; /* Adjust alignment as needed */
+    justify-content: flex-start; 
     min-height: 100vh;
-    margin: 0; /* Reset default margin */
+    margin: 0;
   }
 
   h2 {
     text-align: center;
     font-size: 30px;
-    margin-top: 20px; /* Add margin to create a gap */
+    margin-top: 20px;
   }
   
   form {
     text-align: center;
-    margin-top: 20px; /* Add margin to create a gap */
+    margin-top: 20px;
   }
   
   label {
@@ -59,14 +59,14 @@ body {
   
   label {
     display: inline-block;
-    width: 120px; /* Adjust the width as needed */
+    width: 120px;
     text-align: right;
-    margin-right: 10px; /* Add some spacing between label and input */
+    margin-right: 10px; 
   }
   
   input[type="text"],
   input[type="password"] {
-    width: 200px; /* Adjust the width as needed */
+    width: 200px; 
     padding: 8px;
     margin-bottom: 15px;
     font-size: 16px;

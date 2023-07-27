@@ -21,12 +21,12 @@ body {
   max-width: 1200px;
   padding: 20px;
   width: 100%; /* This allows container to be responsive */
-  box-sizing: border-box; /* To include padding and border in width */
+  box-sizing: border-box;
 }
 
 /* Style the header */
 h1 {
-  font-size: 2.5em; /* Using em makes font size responsive */
+  font-size: 2.5em; 
   margin-bottom: 20px;
 }
 
@@ -36,7 +36,7 @@ h1 {
   justify-content: space-between;
   align-items: flex-start;
   margin-top: 40px;
-  flex-wrap: wrap; /* Allow the KPI boxes to wrap on smaller screens */
+  flex-wrap: wrap; 
 }
 
 /* Style each KPI box */
@@ -45,11 +45,11 @@ h1 {
   border-radius: 4px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 20px;
-  width: 60%; /* Set the width to 60% of the container */
-  margin-bottom: 20px; /* Add margin at the bottom of each KPI box */
-  margin-left: auto; /* Center align each KPI box horizontally */
+  width: 60%;
+  margin-bottom: 20px; 
+  margin-left: auto;
   margin-right: auto;
-  box-sizing: border-box; /* Include padding and border within the width */
+  box-sizing: border-box; 
 }
 
 #KPI-overview h2 {
@@ -58,7 +58,7 @@ h1 {
 }
 
 #KPI-overview p {
-  font-size: 1em; /* Using em makes font size responsive */
+  font-size: 1em; 
   color: #666;
   margin-bottom: 20px;
 }
@@ -73,15 +73,15 @@ footer {
 /* Media queries for responsive design */
 @media (max-width: 1200px) {
   .container {
-    padding: 10px; /* Adjust the padding for smaller screens */
+    padding: 10px;
   }
 
   #KPI-overview > div {
-    width: 80%; /* Set the width to 80% of the container on smaller screens */
+    width: 80%; 
   }
 
   h1 {
-    font-size: 2em; /* Adjust font sizes for smaller screens */
+    font-size: 2em;
   }
 
   #KPI-overview h2 {
@@ -95,11 +95,11 @@ footer {
 
 @media (max-width: 768px) {
   #KPI-overview > div {
-    width: 100%; /* Set the width to 100% of the container on even smaller screens */
+    width: 100%;
   }
 
   h1 {
-    font-size: 1.5em; /* Adjust font sizes for even smaller screens */
+    font-size: 1.5em; 
   }
 
   #KPI-overview h2 {
@@ -109,15 +109,13 @@ footer {
   #KPI-overview p {
     font-size: 0.8em;
   }
-
-  /* Adjust font size of the data label (bar name) for smaller screens */
   .chartjs-plugin-datalabels {
     font-size: 12px;
   }
   
-  /* Additional media queries for even smaller screens */
+
   @media (max-width: 480px) {
-    /* Further decrease font size for even smaller screens if needed */
+
     .chartjs-plugin-datalabels {
       font-size: 10px;
     }
