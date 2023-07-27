@@ -2,6 +2,9 @@ import database from "./database.js";
 import fs from "fs";
 import xlsx from "xlsx";
 import xml2js from "xml2js";
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 async function getTableRows(tableName) {
   const query = `SELECT * FROM ${tableName}`;

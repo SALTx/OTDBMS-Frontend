@@ -34,3 +34,10 @@ SQL notes
 [DONE] add user controls for admin
 [DONE] add password security
 [DONE] make tests for the api
+
+
+CURRENT POST MIGRATION ERRORS:
+overseasprograms missing controls because case sensitivity
+fix css fixed positions from floating over existing elements
+change the label for the controls to filters    
+scrollbar for universal tables

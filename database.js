@@ -1,35 +1,37 @@
 import dotenv from "dotenv";
-import mysql from "mysql";
-import chalk from "chalk";
-
 dotenv.config();
 
-const connection = mysql.createConnection({
-  host: process.env.DATABASE_HOST,
-  user: process.env.DATABASE_USERNAME,
-  password: process.env.DATABASE_PASSWORD,
-  database: process.env.DATABASE_NAME,
+import mysql from "mysql2/promise";
+import chalk from "chalk";
+
+const pool = mysql.createPool({
+  host: '172.16.164.78',
+  port: 3306,
+  user: "saahil",
+  password: "saahil",
+  database: "opsystem_test",
+  waitForConnections: true,
+  connectionLimit: 10,
+  queueLimit: 0,
 });
 
-connection.connect(function (err) {
-  if (err) throw err;
+pool.getConnection((err, connection) => {
+  if (err) {
+    console.log(err);
+    throw new Error("Cant connect to database");
+  }
   console.log(chalk.green("Database is connected successfully !"));
+  connection.release();
 });
 
-async function executeQuery(query, values = []) {
-  return new Promise((resolve, reject) => {
-    if (values.length > 0) {
-      connection.query(query, values, function (err, rows, fields) {
-        if (err) reject(err);
-        resolve(rows);
-      });
-    } else {
-      connection.query(query, function (err, rows, fields) {
-        if (err) reject(err);
-        resolve(rows);
-      });
-    }
-  });
+async function executeQuery(query) {
+  const connection = await pool.getConnection();
+  try {
+    const [rows, fields] = await connection.query(query);
+    return rows;
+  } finally {
+    connection.release();
+  }
 }
 
 async function getDatabaseTables() {
@@ -58,7 +60,6 @@ async function getDistinctCourseCodes() {
 }
 
 export default {
-  connection,
   executeQuery,
   utils: {
     getDatabaseTables,

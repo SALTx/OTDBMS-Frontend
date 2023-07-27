@@ -36,14 +36,14 @@ function renderKpiGraph(kpiNumber) {
           labels: courseNames,
           datasets: [
             {
-              label: "Number of Students",
+              label: "Actual",
               data: numStudents,
               backgroundColor: "rgba(255, 99, 132, 0.2)",
               borderColor: "rgba(255, 99, 132, 1)",
               borderWidth: 1,
             },
             {
-              label: "Expected Number of Students",
+              label: "Target",
               data:
                 kpiNumber === 1
                   ? kpi1Expected
