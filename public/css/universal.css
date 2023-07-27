@@ -1,4 +1,3 @@
-
 table {
   border-collapse: collapse;
   width: calc(100% + 50px);
@@ -9,12 +8,11 @@ table {
 /* Table cells */
 th,
 td {
-  border: 2px solid black; 
+  border: 2px solid black;
   padding: 10px;
   text-align: left;
-  font-size: 16px; 
+  font-size: 16px;
 }
-
 
 thead {
   position: sticky;
@@ -27,21 +25,24 @@ thead {
 .table-container {
   max-height: 450px;
   overflow-y: auto;
-  margin: 20px auto; 
+  margin: 20px auto;
   text-align: center;
 }
 
 /* Center the sort and search section */
 #sort-search {
   text-align: center;
-  margin-bottom: 40px; 
+  margin-bottom: 40px;
 }
 
 /* Center the "Students" heading */
-h2, h3, h4, h5, h6 {
+h2,
+h3,
+h4,
+h5,
+h6 {
   text-align: center;
 }
-
 
 .checkbox-container {
   display: flex;
@@ -56,7 +57,7 @@ h2, h3, h4, h5, h6 {
 }
 
 .checkbox-container label {
-  margin: 5px; 
+  margin: 5px;
   display: flex;
   align-items: center;
 }
@@ -78,7 +79,7 @@ h2, h3, h4, h5, h6 {
 /* Sort by */
 #sort-select,
 #sort-select option {
-  font-size: 24px; 
+  font-size: 24px;
 }
 
 /* Search */
@@ -95,7 +96,6 @@ h2, h3, h4, h5, h6 {
 
 /* Responsive styles */
 @media screen and (max-width: 600px) {
-
   td {
     font-size: 14px; /* Reduce font size for table cells on smaller screens */
   }
@@ -103,6 +103,6 @@ h2, h3, h4, h5, h6 {
   #sort-search label[for="sort-select"],
   #sort-search label[for="search-input"],
   #sort-search button#search-button {
-    font-size: 18px; 
+    font-size: 18px;
   }
 }

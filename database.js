@@ -44,7 +44,7 @@ async function getTableColumns(tableName) {
 
 async function getEnumValues(tableName, columnName) {
   const rows = await executeQuery(
-    `SELECT COLUMN_TYPE FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '${tableName}' AND COLUMN_NAME = '${columnName}'`
+    `SELECT COLUMN_TYPE FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '${tableName}' AND COLUMN_NAME = '${columnName}'`,
   );
   const enumValues = rows[0].COLUMN_TYPE.match(/'([^']+)'/g);
   return enumValues.map((enumValue) => enumValue.replace(/'/g, ""));
@@ -52,7 +52,7 @@ async function getEnumValues(tableName, columnName) {
 
 async function getDistinctCourseCodes() {
   const rows = await executeQuery(
-    `SELECT DISTINCT \`Course Code\` FROM students;`
+    `SELECT DISTINCT \`Course Code\` FROM students;`,
   );
   return rows.map((row) => row.Field);
 }

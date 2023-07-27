@@ -64,7 +64,7 @@ userRouter.put("/:username", (req, res) => {
   const { password, accountType, name } = req.body;
   database
     .executeQuery(
-      `UPDATE users SET password = '${password}', accountType = '${accountType}', name = '${name}' WHERE username = '${username}'`
+      `UPDATE users SET password = '${password}', accountType = '${accountType}', name = '${name}' WHERE username = '${username}'`,
     )
     .then((result) => {
       if (result.affectedRows === 0) {

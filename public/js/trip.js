@@ -6,7 +6,9 @@ studyStageCheckboxes.forEach((checkbox) => {
       .filter((checkbox) => checkbox.checked)
       .map((checkbox) => parseInt(checkbox.dataset.stage));
 
-    const tripRows = document.querySelectorAll(".checkbox-table + .trip-table tbody tr");
+    const tripRows = document.querySelectorAll(
+      ".checkbox-table + .trip-table tbody tr",
+    );
 
     tripRows.forEach((row) => {
       const rowStage = parseInt(row.querySelector("td").textContent);

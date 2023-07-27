@@ -1,6 +1,6 @@
 //* Event listener for the Program Type checkboxes
 const programTypeCheckboxes = document.querySelectorAll(
-  ".program-type-checkbox"
+  ".program-type-checkbox",
 );
 programTypeCheckboxes.forEach((checkbox) => {
   checkbox.addEventListener("change", () => {
@@ -32,7 +32,7 @@ $(document).ready(function () {
         $("<option>", {
           value: country.id,
           text: country.name,
-        })
+        }),
       );
     });
   });
