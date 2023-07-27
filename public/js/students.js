@@ -41,7 +41,7 @@ studyStageCheckboxes.forEach((checkbox) => {
     });
   });
 
-  // Event listener for the Course checkboxes
+  //* Event listener for the Course checkboxes
   const courseCheckboxes = document.querySelectorAll(".course-checkbox");
   courseCheckboxes.forEach((checkbox) => {
     checkbox.addEventListener("change", () => {
