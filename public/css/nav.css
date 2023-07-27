@@ -1,4 +1,4 @@
-/* Custom Dropdown Styles */
+
 .dropdown {
   position: relative;
   display: inline-block;
@@ -27,22 +27,27 @@
   display: block;
 }
 
-/* Internal Nav Bar */
+
 nav {
   background-color: #333;
   display: flex;
-  justify-content: center; /* Align links in the middle */
+  justify-content: center; 
   align-items: center;
   padding: 10px;
   width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100; 
 }
+
 
 nav ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
   display: flex;
-  justify-content: center; /* Align links in the middle */
+  justify-content: center; 
   flex-grow: 1;
 }
 
@@ -56,7 +61,7 @@ nav a {
   color: #fff;
   text-decoration: none;
   transition: background-color 0.3s ease;
-  font-size: 22px; /* Add this line to increase the text size */
+  font-size: 22px; 
 }
 
 nav a:hover {
@@ -69,7 +74,6 @@ nav span {
   color: #fff;
 }
 
-/* Adjustments for small screens */
 @media (max-width: 768px) {
   nav {
     flex-direction: column;
@@ -91,14 +95,13 @@ nav span {
     text-align: center;
   }
   
-  /* Additional media queries for smaller screens */
+
   @media (max-width: 480px) {
     nav a {
       font-size: 18px;
     }
   }
-  
-  /* Additional media queries for even smaller screens */
+
   @media (max-width: 360px) {
     nav a {
       font-size: 16px;
