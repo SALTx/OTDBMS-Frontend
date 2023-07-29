@@ -10,14 +10,12 @@
 - add values for the individual bars, over the bar > in a table > besides the course name
 - add sorting functionality (alphabetical, value)
 - add yearly report functionality and figure out how itll be formatted
-- finish up the trips page and make it possible for staff accounts to view their own diplomas
-- hide sensitive information from guests (student admin numbers, names, etc) (maybe censor off the last few letters)
 - copy edit page from the old project
-
-Middle notes
+- fix controls
 
 SQL notes
 
+- finish up the trips page and make it possible for staff accounts to view their own diplomas
 - Change approval status
 - improve the readability of the overseas programs
 - remove time from the overseas programs
@@ -26,6 +24,7 @@ SQL notes
 - add code to search overseas programs by quarter
 
 [DONE] inform users that they can hover over the bars to view more information in the graph
+[DONE] hide sensitive information from guests (student admin numbers, names, etc) (maybe censor off the last few letters)
 [DONE] Add blue values to KPI graphs
 [DONE] add favicon to the website
 [DONE] add number of rows that are being displayed in the table

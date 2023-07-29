@@ -14,7 +14,7 @@
 
     <!-- define data in the client-side scope -->
     <script>
-      const data = <%- JSON.stringify(data) %>;
+      const data = "<%= JSON.stringify(data) %>";
     </script>
     <style>
       /* Increase font size for Sort by */
@@ -137,3 +137,7 @@
     <script src="/js/universal.js"></script>
   </body>
 </html>
+
+/*DELETE FROM students WHERE `Student Name` LIKE '%csv%' OR `Student Name` LIKE
+'%json%' OR `Student Name` LIKE '%xml%' OR `Student Name` LIKE '%xls%' OR
+`Student Name` LIKE '%xlsx%';*/

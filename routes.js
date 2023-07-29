@@ -293,4 +293,12 @@ router.post("/upload", (req, res) => {
   }
 });
 
+// download resources
+router.get("/resources/:table/:file", (req, res) => {
+  const table = req.params.table;
+  const file = req.params.file;
+  const filepath = `./public/resources/${table}/${file}`;
+  res.download(filepath);
+});
+
 export default router;

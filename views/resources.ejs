@@ -10,12 +10,17 @@
     <%- include('partials/nav') %>
 
     <h1>Resources</h1>
-    <h4>Import templates students</h4>
+    <h4>Import templates</h4>
     Download import templates for the following file formats: <% let fileFormats
-    = ['XML', 'XLS', 'JSON', 'CSV'] %> <% fileFormats.forEach((fileFormat) => {
-    %>
-    <a href="/resources/download/<%= fileFormat %>"><%= fileFormat %></a>
-    <% }) %>
+    = ['XML', 'XLSX', 'JSON', 'CSV']; %> <% let tables = ['students',
+    'overseas-programs']; %> <% tables.forEach((table) => { %> <%
+    fileFormats.forEach((fileFormat) => { %>
+    <a
+      href="/resources/<%= table %>/data.<%= fileFormat.toLowerCase() %>"
+      download
+      ><%= fileFormat %> <%= table %></a
+    >
+    <% }) %> <% }) %>
 
     <h4>Reports</h4>
     <a href="/resources/reports/trips">Download reports on trips</a>

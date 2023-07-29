@@ -63,9 +63,6 @@
             </select>
           </td>
           <td>
-            <button onclick="retrieveUser('<%= user.username %>')">
-              Retrieve
-            </button>
             <button onclick="updateUser('<%= user.username %>')">Update</button>
             <button onclick="deleteUser('<%= user.username %>')">Delete</button>
           </td>
@@ -92,10 +89,6 @@
     <%- include('partials/footer') %>
     <script src="/js/jquery-3.7.0.min.js"></script>
     <script>
-      function retrieveUser(username) {
-        // TODO: implement retrieve user functionality
-      }
-
       function updateUser(username) {
         $.ajax({
           url: `/users/${username}`,

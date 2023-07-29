@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const isChecked = event.target.checked;
       const columnIndex = event.target.dataset.index;
       const columnCells = table.querySelectorAll(
-        `tr td:nth-child(${parseInt(columnIndex) + 1})`,
+        `tr td:nth-child(${parseInt(columnIndex) + 1})`
       );
 
       columnCells.forEach((cell) => {
@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       const headerCells = table.querySelectorAll(
-        `thead th:nth-child(${parseInt(columnIndex) + 1})`,
+        `thead th:nth-child(${parseInt(columnIndex) + 1})`
       );
       headerCells.forEach((headerCell) => {
         headerCell.style.display = isChecked ? "" : "none";
@@ -29,6 +29,7 @@ $(document).ready(() => {
   $("#sort-select").on("change", () => {
     const column = $("#sort-select").val();
     const sortOrder = $("#sort-order").is(":checked") ? 1 : -1;
+    console.log(data);
     const sortedData = data.sort((a, b) => {
       if (a[column] < b[column]) {
         return -1 * sortOrder;
@@ -170,7 +171,7 @@ function tableToJson(table) {
 
 async function insertData(tableName, data) {
   const values = data.map(
-    (row) => `(${row.map((value) => `'${value}'`).join(", ")})`,
+    (row) => `(${row.map((value) => `'${value}'`).join(", ")})`
   );
   const query = `INSERT INTO ${tableName} VALUES ${values.join(", ")}`;
   await database.executeQuery(query);

@@ -1,6 +1,6 @@
 //* Event listener for the Citizenship Status checkboxes
 const citizenshipCheckboxes = document.querySelectorAll(
-  ".citizenship-checkbox",
+  ".citizenship-checkbox"
 );
 citizenshipCheckboxes.forEach((checkbox) => {
   checkbox.addEventListener("change", () => {
