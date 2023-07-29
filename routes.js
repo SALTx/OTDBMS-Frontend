@@ -149,7 +149,7 @@ router.get("/manage", async (req, res) => {
   //! Login action
   router.post("/login", (req, res) => {
     let { username, password } = req.body;
-      const query = `SELECT * from users where username = '${username}' and password = '${password}'`;
+    const query = `SELECT * from users where username = '${username}' and password = '${password}'`;
     const values = [username, password];
     database.executeQuery(query, values).then((result) => {
       if (result.length == 1) {
@@ -222,7 +222,7 @@ router.post("/upload", (req, res) => {
       }
     });
 
-    if (fileType == "xml") {
+    if (filetype == "xml") {
     } else if (filetype === "xls" || filetype === "xlsx") {
     }
   }
