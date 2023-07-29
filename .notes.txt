@@ -12,11 +12,9 @@
 - add yearly report functionality and figure out how itll be formatted
 - finish up the trips page and make it possible for staff accounts to view their own diplomas
 - hide sensitive information from guests (student admin numbers, names, etc) (maybe censor off the last few letters)
-- imform users that they can hover over the bars to view more information in the graph
 - copy edit page from the old project
 
 Middle notes
-- Add blue values to KPI graphs
 
 SQL notes
 
@@ -27,6 +25,8 @@ SQL notes
 - count by program type
 - add code to search overseas programs by quarter
 
+[DONE] inform users that they can hover over the bars to view more information in the graph
+[DONE] Add blue values to KPI graphs
 [DONE] add favicon to the website
 [DONE] add number of rows that are being displayed in the table
 [DONE] add dropdown menu for some search options

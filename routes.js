@@ -28,6 +28,21 @@ router.get("/", (req, res) => {
     const studentsview = await database.executeQuery(`SELECT * FROM ${table}`);
     const partialExists = fs.existsSync(`views/partials/controls/${table}.ejs`);
 
+    const sensitiveFields = [
+      "Admin Number",
+      "Citizenship Status",
+      "Course Code",
+    ];
+
+    // if user is not logged in or is not an admin, hide sensitive fields
+    if (!req.session.user || req.session.user.accountType != "Admin") {
+      for (let i = 0; i < studentsview.length; i++) {
+        for (let j = 0; j < sensitiveFields.length; j++) {
+          delete studentsview[i][sensitiveFields[j]];
+        }
+      }
+    }
+
     res.render("universal", {
       page: "Students",
       table,
