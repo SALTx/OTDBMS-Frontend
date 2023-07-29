@@ -6,44 +6,43 @@ import chalk from "chalk";
 import session from "express-session";
 import fileUpload from "express-fileupload";
 
-// workaround for __dirname
+//! workaround for __dirname
 import path from "path";
 import { fileURLToPath } from "url";
-
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+//! Load env vars
 dotenv.config();
 
+//! declare and configure app
 const app = express();
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(express.static(__dirname));
 app.use("/icons", express.static("public/icons"));
 app.use(express.urlencoded({ extended: true }));
-
-// uploading files
 app.use(fileUpload());
 
-// session
+//! session
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
     resave: true,
     saveUninitialized: true,
-  }),
+  })
 );
 
-// routes
+//! routes
 app.use("/", router);
 app.use("/users", userRouter);
 
-// favicon
+//! favicon
 app.get("/favicon.ico", (req, res) => {
   res.sendFile(__dirname + "/public/icons/favicon.ico");
 });
 
-// start server
+//! start server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(chalk.green(`Server started on port ${PORT}`));

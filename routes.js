@@ -106,7 +106,6 @@ router.get("/oimpdetails", async (req, res) => {
 
 //!! Admin: Audit table
 router.get("/audittable", async (req, res) => {
-  // if user is not logged in or is not an admin, redirect to home page
   if (!req.session.user || req.session.user.accountType != "Admin") {
     res.redirect("/");
     return;
@@ -132,6 +131,7 @@ router.get("/resources", async (req, res) => {
   });
 });
 
+//! Manage users page
 router.get("/manage", async (req, res) => {
   // if user is not logged in is not an admin, redirect to home page
   if (!req.session.user || req.session.user.accountType != "Admin") {
@@ -187,6 +187,7 @@ router.get("/manage", async (req, res) => {
 }
 //! END Auth routes
 
+//! Retrieve KPI information for index page
 router.get("/database/views/kpi/:num", async (req, res) => {
   const num = req.params.num;
   if (num < 1 || num > 4) {
@@ -197,13 +198,14 @@ router.get("/database/views/kpi/:num", async (req, res) => {
   res.send(kpi);
 });
 
+//? Get countries list [Unimplemented]
+//TODO: implement this in the search box
 router.get("/api/countries", async (req, res) => {
   const countries = await database.executeQuery("SELECT * FROM countries");
   res.send(countries);
 });
 
-// TODO: remove space from user's name or just use username
-// uploading file
+//! Upload file to server and import data
 router.post("/upload", (req, res) => {
   const table = req.body.table;
   if (!req.files || Object.keys(req.files).length === 0) {
@@ -293,7 +295,7 @@ router.post("/upload", (req, res) => {
   }
 });
 
-// download resources
+//! Download import templates
 router.get("/resources/:table/:file", (req, res) => {
   const table = req.params.table;
   const file = req.params.file;
