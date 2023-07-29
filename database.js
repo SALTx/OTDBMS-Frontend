@@ -5,10 +5,10 @@ import mysql from "mysql2/promise";
 import chalk from "chalk";
 
 const pool = mysql.createPool({
-  host: '172.16.164.78',
+  host: 'localhost',
   port: 3306,
-  user: "saahil",
-  password: "saahil",
+  user: "root",
+  password: "",
   database: "opsystem_test",
   waitForConnections: true,
   connectionLimit: 10,
