@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<student-data xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<record>
+		<adminNo>123456A</adminNo>
+		<name>XML Uno</name>
+		<citizenshipStatus>Singapore citizen</citizenshipStatus>
+		<studyStage>1</studyStage>
+		<courseCode>EGDF21</courseCode>
+		<pemGroup>IM2000</pemGroup>
+	</record>
+	<record>
+		<adminNo>123457A</adminNo>
+		<name>XML Dos</name>
+		<citizenshipStatus>Singapore citizen</citizenshipStatus>
+		<studyStage>1</studyStage>
+		<courseCode>EGDF21</courseCode>
+		<pemGroup>IM2000</pemGroup>
+	</record>
+	<record>
+		<adminNo>123458A</adminNo>
+		<name>XML Tres</name>
+		<citizenshipStatus>Singapore citizen</citizenshipStatus>
+		<studyStage>1</studyStage>
+		<courseCode>EGDF21</courseCode>
+		<pemGroup>IM2000</pemGroup>
+	</record>
+</student-data>
