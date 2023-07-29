@@ -190,6 +190,7 @@ router.get("/api/countries", async (req, res) => {
 // TODO: remove space from user's name or just use username
 // uploading file
 router.post("/upload", (req, res) => {
+  const table = req.body.table;
   if (!req.files || Object.keys(req.files).length === 0) {
     res.send("No files were uploaded.");
     return;
@@ -211,32 +212,42 @@ router.post("/upload", (req, res) => {
     }
 
     const timestamp = moment().format("YYYYMMDD_HHmm");
-    // let filename = `${req.body.name}_${timestamp}.${filetype}`;
-    // filename = `${req.body.name.replace(/\s/g, "")}_${timestamp}.${filetype}`;
-    //TODO: TEMP
-    let filename = "JohnAdmin_20230729_2359.csv";
+    let filename = `${req.body.name}_${timestamp}.${filetype}`;
+    filename = `${req.body.name.replace(/\s/g, "")}_${timestamp}.${filetype}`;
 
     let filepath = `./public/uploads/${filename}`;
     let requiredHeaders;
 
-    database.utils.getTableColumns("students").then((columns) => {
+    database.utils.getTableColumns(table).then((columns) => {
       requiredHeaders = columns;
       console.log(requiredHeaders);
       file.mv(filepath, () => {});
 
       if (filetype == "xml") {
-      } else if (filetype === "xls" || filetype === "xlsx") {
-      } else if (filetype == "csv") {
-        //! work on this first
-        console.log(
-          database.utils.jsonToSQL(
-            importFiles.csv(filepath, requiredHeaders),
-            "students"
-          )
+        database.utils.jsonToSQL(
+          importFiles.xml(filepath, requiredHeaders),
+          table
         );
-      } else if (filetype == "JSON") {
+      } else if (filetype === "xls" || filetype === "xlsx") {
+        database.utils.jsonToSQL(
+          importFiles.xlsx(filepath, requiredHeaders),
+          table
+        );
+      } else if (filetype == "csv") {
+        database.utils.jsonToSQL(
+          importFiles.csv(filepath, requiredHeaders),
+          table
+        );
+      } else if (filetype == "json") {
+        database.utils.jsonToSQL(
+          importFiles.json(filepath, requiredHeaders),
+          table
+        );
       } else {
+        res.send("Invalid file type.");
+        return;
       }
+      alert("File uploaded successfully");
     });
   }
 });
