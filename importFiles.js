@@ -88,7 +88,7 @@ function importCSVFile(filepath, requiredHeaders) {
   const lines = data.split("\n");
   const headers = lines[0].split(",").map((header) => header.trim()); // Trim headers
 
-  for (const header of requiredHeaders) {
+  for (let header of requiredHeaders) {
     if (!headers.includes(header)) {
       throw new Error(`Required header '${header}' not found in CSV.`);
     }

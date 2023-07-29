@@ -211,20 +211,33 @@ router.post("/upload", (req, res) => {
     }
 
     const timestamp = moment().format("YYYYMMDD_HHmm");
-    let filename = `${req.body.name}_${timestamp}.${filetype}`;
-    filename = `${req.body.name.replace(/\s/g, "")}_${timestamp}.${filetype}`;
+    // let filename = `${req.body.name}_${timestamp}.${filetype}`;
+    // filename = `${req.body.name.replace(/\s/g, "")}_${timestamp}.${filetype}`;
+    //TODO: TEMP
+    let filename = "JohnAdmin_20230729_2359.csv";
 
-    file.mv(`public/uploads/${filename}`, (err) => {
-      if (err) {
-        res.send("Error uploading file");
+    let filepath = `./public/uploads/${filename}`;
+    let requiredHeaders;
+
+    database.utils.getTableColumns("students").then((columns) => {
+      requiredHeaders = columns;
+      console.log(requiredHeaders);
+      file.mv(filepath, () => {});
+
+      if (filetype == "xml") {
+      } else if (filetype === "xls" || filetype === "xlsx") {
+      } else if (filetype == "csv") {
+        //! work on this first
+        console.log(
+          database.utils.jsonToSQL(
+            importFiles.csv(filepath, requiredHeaders),
+            "students"
+          )
+        );
+      } else if (filetype == "JSON") {
       } else {
-        res.send("File uploaded");
       }
     });
-
-    if (filetype == "xml") {
-    } else if (filetype === "xls" || filetype === "xlsx") {
-    }
   }
 });
 
