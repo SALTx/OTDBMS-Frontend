@@ -201,6 +201,18 @@ router.post("/upload", (req, res) => {
     const allowedTypes = ["xml", "xls", "xlsx", "json", "csv"];
     const allowedSize = 1024 * 1024; // 1 MB
 
+    // corrct table value
+    let correctTable;
+    if (table == "studentsView") {
+      correctTable = "students";
+    } else if (table == "overseasProgramsView") {
+      correctTable = "overseasprograms";
+    } else if (table == "oimpDetailsView") {
+      correctTable = "oimpdetails";
+    } else if (table == "tripDetails") {
+      correctTable = "trips";
+    }
+
     if (!allowedTypes.includes(filetype)) {
       res.send("Invalid file type.");
       return;
@@ -239,28 +251,28 @@ router.post("/upload", (req, res) => {
         if (filetype == "xml") {
           database.utils.jsonToSQL(
             importFiles.xml(filepath, requiredHeaders),
-            table
+            correctTable
           );
         } else if (filetype === "xls" || filetype === "xlsx") {
           database.utils.jsonToSQL(
             importFiles.xlsx(filepath, requiredHeaders),
-            table
+            correctTable
           );
         } else if (filetype == "csv") {
           database.utils.jsonToSQL(
             importFiles.csv(filepath, requiredHeaders),
-            table
+            correctTable
           );
         } else if (filetype == "json") {
           database.utils.jsonToSQL(
             importFiles.json(filepath, requiredHeaders),
-            table
+            correctTable
           );
         } else {
           res.send("Invalid file type.");
           return;
         }
-        res.send("File uploaded.");
+        res.redirect(`/${correctTable}`);
       });
     });
   }
