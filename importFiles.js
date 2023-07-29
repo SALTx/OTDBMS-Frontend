@@ -1,9 +1,14 @@
-// TODO fix csv newline bug when importing
+/*
+ * Import files
+ * These functions allow for files to be converted into JSON objects
+ * The JSON objects can then be imported into the database after being validated and turned into SQL queries
+ */
 
 import fs from "fs";
 import xlsx from "xlsx";
 import xml2js from "xml2js";
 
+//! Import xml files
 function importXMLFile(filePath, requiredHeaders) {
   const data = fs.readFileSync(filePath, "utf8");
   let output = null;
@@ -37,6 +42,7 @@ function importXMLFile(filePath, requiredHeaders) {
   return output;
 }
 
+//! Import xls, xlsx files
 function importXLSXFile(filePath, requiredHeaders) {
   const workbook = xlsx.readFile(filePath);
   const worksheet = workbook.Sheets[workbook.SheetNames[0]];
@@ -64,6 +70,7 @@ function importXLSXFile(filePath, requiredHeaders) {
   return output;
 }
 
+//! Import json files
 function importJSONFile(filepath, requiredHeaders) {
   const data = fs.readFileSync(filepath, "utf8");
   const jsonData = JSON.parse(data);
@@ -81,6 +88,7 @@ function importJSONFile(filepath, requiredHeaders) {
   return output;
 }
 
+//! Import csv files
 function importCSVFile(filepath, requiredHeaders) {
   const data = fs.readFileSync(filepath, "utf8");
   const output = [];
@@ -109,6 +117,7 @@ function importCSVFile(filepath, requiredHeaders) {
   return output;
 }
 
+//! Exports
 export default {
   xml: importXMLFile,
   xlsx: importXLSXFile,

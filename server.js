@@ -1,3 +1,6 @@
+/*
+Entry point for the application
+*/
 import dotenv from "dotenv";
 import express from "express";
 import router from "./routes.js";
