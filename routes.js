@@ -221,33 +221,47 @@ router.post("/upload", (req, res) => {
     database.utils.getTableColumns(table).then((columns) => {
       requiredHeaders = columns;
       console.log(requiredHeaders);
-      file.mv(filepath, () => {});
 
-      if (filetype == "xml") {
-        database.utils.jsonToSQL(
-          importFiles.xml(filepath, requiredHeaders),
-          table
-        );
-      } else if (filetype === "xls" || filetype === "xlsx") {
-        database.utils.jsonToSQL(
-          importFiles.xlsx(filepath, requiredHeaders),
-          table
-        );
-      } else if (filetype == "csv") {
-        database.utils.jsonToSQL(
-          importFiles.csv(filepath, requiredHeaders),
-          table
-        );
-      } else if (filetype == "json") {
-        database.utils.jsonToSQL(
-          importFiles.json(filepath, requiredHeaders),
-          table
-        );
-      } else {
-        res.send("Invalid file type.");
-        return;
+      // fallback since the first one failed
+      console.log(`table: ${table}`);
+      if (table == "studentsView") {
+        requiredHeaders = [
+          "Admin Number",
+          "Student Name",
+          "Citizenship Status",
+          "Study Stage",
+          "Course Code",
+          "PEM Group",
+        ];
       }
-      alert("File uploaded successfully");
+
+      file.mv(filepath, () => {
+        if (filetype == "xml") {
+          database.utils.jsonToSQL(
+            importFiles.xml(filepath, requiredHeaders),
+            table
+          );
+        } else if (filetype === "xls" || filetype === "xlsx") {
+          database.utils.jsonToSQL(
+            importFiles.xlsx(filepath, requiredHeaders),
+            table
+          );
+        } else if (filetype == "csv") {
+          database.utils.jsonToSQL(
+            importFiles.csv(filepath, requiredHeaders),
+            table
+          );
+        } else if (filetype == "json") {
+          database.utils.jsonToSQL(
+            importFiles.json(filepath, requiredHeaders),
+            table
+          );
+        } else {
+          res.send("Invalid file type.");
+          return;
+        }
+        res.send("File uploaded.");
+      });
     });
   }
 });
