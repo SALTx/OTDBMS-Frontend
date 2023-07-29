@@ -1,26 +1,26 @@
 [
   {
-    "adminNo": "312345A",
-    "name": "Jason Uno",
-    "citizenshipStatus": "Singapore citizen",
-    "studyStage": "1",
-    "courseCode": "EGDF21",
-    "pemGroup": "MI2000"
+    "Admin Number": "312345A",
+    "Student Name": "Jason Uno",
+    "Citizenship Status": "Singapore citizen",
+    "Study Stage": "1",
+    "Course Code": "EGDF21",
+    "PEM Group": "MI2000"
   },
   {
-    "adminNo": "312346A",
-    "name": "Jason Dos",
-    "citizenshipStatus": "Singapore citizen",
-    "studyStage": "1",
-    "courseCode": "EGDF21",
-    "pemGroup": "MI2000"
+    "Admin Number": "312346A",
+    "Student Name": "Jason Dos",
+    "Citizenship Status": "Singapore citizen",
+    "Study Stage": "1",
+    "Course Code": "EGDF21",
+    "PEM Group": "MI2000"
   },
   {
-    "adminNo": "312347A",
-    "name": "Jason Tres",
-    "citizenshipStatus": "Singapore citizen",
-    "studyStage": "1",
-    "courseCode": "EGDF21",
-    "pemGroup": "MI2000"
+    "Admin Number": "312347A",
+    "Student Name": "Jason Tres",
+    "Citizenship Status": "Singapore citizen",
+    "Study Stage": "1",
+    "Course Code": "EGDF21",
+    "PEM Group": "MI2000"
   }
 ]
