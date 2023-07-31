@@ -3,6 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Overseas travel database management system"
+    />
+    <meta
+      name="keywords"
+      content="MySQL, NYP, Overseas travel, codeless sql manipulation"
+    />
     <link rel="stylesheet" href="/css/universal.css" />
     <title><%- page %></title>
     <link
@@ -16,18 +24,6 @@
     <script>
       const data = <%- JSON.stringify(data) %>;
     </script>
-    <style>
-      /* Increase font size for Sort by */
-      #sort-search label[for="sort-select"] {
-        font-size: 24px;
-      }
-
-      /* Increase font size for Search */
-      #sort-search label[for="search-input"],
-      #sort-search button#search-button {
-        font-size: 24px;
-      }
-    </style>
   </head>
   <body>
     <%- include('partials/nav') %>

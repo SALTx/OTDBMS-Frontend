@@ -94,6 +94,17 @@ h6 {
   margin-top: 20px;
 }
 
+/* Increase font size for Sort by */
+#sort-search label[for="sort-select"] {
+  font-size: 24px;
+}
+
+/* Increase font size for Search */
+#sort-search label[for="search-input"],
+#sort-search button#search-button {
+  font-size: 24px;
+}
+
 /* Responsive styles */
 @media screen and (max-width: 600px) {
   td {

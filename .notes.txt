@@ -1,17 +1,12 @@
-- check every page for
-    - imports
-    - titles
-    - meta tags  
-- rewrite the controls for individual fields using the database methods such as getEnumValues and getDistinctCourseCodes
-- when changing search by the columns re-appear
+[TOO LATE TO IMPLEMENT]     add yearly report functionality and figure out how itll be formatted
+[TOO LATE TO IMPLEMENT*]    rewrite the controls for individual fields using the database methods such as getEnumValues and getDistinctCourseCodes
+[UNFIXED BUG]               when changing search by the columns re-appear
 - implement search for countries in the select menu
 - improve the search for students page (stage isnt searching properly)
 - add aggregated values in front of the kpi label in index
 - add values for the individual bars, over the bar > in a table > besides the course name
 - add sorting functionality (alphabetical, value)
-- add yearly report functionality and figure out how itll be formatted
 - copy edit page from the old project
-- fix controls
 
 SQL notes
 
@@ -32,11 +27,16 @@ SQL notes
 [DONE] add user name after login
 [DONE] add user controls for admin
 [DONE] add password security
+[DONE] fix controls
 [DONE] make tests for the api
+[DONE] check every page for
+    - imports
+    - titles
+    - meta tags  
 
 
 CURRENT POST MIGRATION ERRORS:
-overseasprograms missing controls because case sensitivity
-fix css fixed positions from floating over existing elements
+[FIXED] overseasprograms missing controls because case sensitivity
+[FIXED] fix css fixed positions from floating over existing elements
 change the label for the controls to filters    
 scrollbar for universal tables
