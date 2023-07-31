@@ -25,6 +25,7 @@ function renderKpiGraph(kpiNumber) {
       const courseNames = data.map((row) => row["Course Name"]);
       const numStudents = data.map((row) => row["Number of Students"]);
       const expected = data.map((row) => row["Estimated"]);
+      console.log(expected);
 
       $(`#kpi${kpiNumber}description`).text(`Description: ${description}`);
 
@@ -48,7 +49,13 @@ function renderKpiGraph(kpiNumber) {
                   return "rgba(255, 19, 132, 0.2)";
                 }
               }),
-              borderColor: "rgba(255, 99, 132, 1)",
+              borderColor: numStudents.map((num, index) => {
+                if (num > expected[index]) {
+                  return "rgba(19, 255, 132, 0.2)";
+                } else {
+                  return "rgba(255, 99, 132, 1)";
+                }
+              }),
               borderWidth: 1,
             },
             {
